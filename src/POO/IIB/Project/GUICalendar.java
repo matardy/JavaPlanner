@@ -94,7 +94,7 @@ public class GUICalendar extends javax.swing.JFrame {
                 //Ocultar eventos
                 if(chkPrueba.isSelected()){
                     //Hacer items events no visibles
-                    name.getItem().setVisible(false);//No los elimina
+                    name.getItem().setVisible(false);//No los elimina!
                 }
                     
                      
