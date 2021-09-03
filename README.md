@@ -3,6 +3,7 @@ Calendario implementado en Java haciendo de uso de Java Swing Components y la li
 
 # JPlanner
 JPlanner es una libreria de la empresa MINDFUSION en la que se puede acceder a objetos y clases que ayudan a gestionar el uso de un calendario. 
+La documentación se encuentra en el siguiente link: https://www.mindfusion.eu/onlinehelp/jplanner/index.htm
 
 # ¿Cómo añadir la libreria a nuestro proyecto en Netbeans?
 Descargar el archivo .jar que se encuentra en la rama master de este repositorio.
