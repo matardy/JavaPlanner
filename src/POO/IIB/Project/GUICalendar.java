@@ -23,6 +23,11 @@ public class GUICalendar extends javax.swing.JFrame {
    
     public GUICalendar() {
         initComponents();
+        //maximizar la GUI
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(MAXIMIZED_BOTH);
+        revalidate();
+        repaint();
        
         //Modelo de la tabla
         dtmTabla = new DefaultTableModel(); 
