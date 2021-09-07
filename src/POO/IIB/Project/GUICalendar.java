@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class GUICalendar extends javax.swing.JFrame {
     //Inicializo el componente tabla
     DefaultTableModel dtmTabla;
-   
+    Evento miEvento; 
     public GUICalendar() {
         initComponents();
        
@@ -44,14 +44,16 @@ public class GUICalendar extends javax.swing.JFrame {
                
                 //Objeto del tipo Appointment para crear eventos en el calendario
                 Appointment item = new Appointment();
+                miEvento = new Academia(txtDato.getText(),txtDescripcion.getText(), txtDescripcion.getText(), "Metodos", 
+                "link"); 
                 
                 //Parametros para crear evento
                 item.setStartTime(e.getDate());
                 DateTime h = e.getDate().addHours(5);
                 item.setEndTime(h);
-                item.setHeaderText(txtDato.getText());
-                item.setDescriptionText(txtDescripcion.getText());
-                
+                item.setHeaderText(miEvento.getNombre());
+                item.setDescriptionText(miEvento.getDescripcion());
+                item.setDetails(miEvento.getDetalles());
                 //Permite seleccionar un color del evento.
                 if(rbtAlta.isSelected()){
                     item.getStyle().setBrush(brushes[0]);
@@ -96,7 +98,7 @@ public class GUICalendar extends javax.swing.JFrame {
                     //Hacer items events no visibles
                     name.getItem().setVisible(false);//No los elimina!
                 }
-                    
+                miEvento.mostrarEvento();
                      
             }
         });
