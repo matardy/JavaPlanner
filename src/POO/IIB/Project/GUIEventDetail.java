@@ -34,6 +34,8 @@ public class GUIEventDetail extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescripcion = new javax.swing.JTextArea();
 
+        setLocation(new java.awt.Point(300, 200));
+
         lblNombreEvento.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
