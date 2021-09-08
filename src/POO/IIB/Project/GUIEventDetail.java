@@ -10,7 +10,7 @@ package POO.IIB.Project;
  * @author StevG
  */
 public class GUIEventDetail extends javax.swing.JFrame {
-
+//dasds
     /**
      * Creates new form GUIEventDetail
      */
