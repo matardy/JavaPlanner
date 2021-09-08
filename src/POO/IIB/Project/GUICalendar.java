@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 //  Branch MadelynDev
 public class GUICalendar extends javax.swing.JFrame {
     //Inicializo el componente tabla
-    //prueba
     DefaultTableModel dtmTabla;
     Evento miEvento; 
     GUIEventDetail guiEvent; 
