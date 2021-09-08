@@ -51,12 +51,16 @@ public class GUICalendar extends javax.swing.JFrame {
                 "link"); 
                 
                 //Parametros para crear evento
-                item.setStartTime(e.getDate());
-                DateTime h = e.getDate().addHours(5);
+                item.setStartTime(e.getDate().addHours(8).addMinutes(25).addSeconds(35));
+                DateTime h = e.getDate().addHours(17).addMinutes(25).addSeconds(35);
+                
                 item.setEndTime(h);
                 item.setHeaderText(miEvento.getNombre());
                 item.setDescriptionText(miEvento.getDescripcion());
                 item.setDetails(miEvento.getDetalles());
+                
+                
+                
                 //Permite seleccionar un color del evento.
                 if(rbtAlta.isSelected()){
                     item.getStyle().setBrush(brushes[0]);
@@ -71,12 +75,12 @@ public class GUICalendar extends javax.swing.JFrame {
                //Aniade el item creado al objeto AwtCalendar.
                 calendar.getSchedule().getItems().add(item);
                 
-
+                System.out.println("Valor: " + item.getStartTime() + item.getEndTime());
                 //Llena los datos en la tabla.
                 dtmTabla.addRow(new Object[]{
                     miEvento.getNombre(),
                     miEvento.getDescripcion() ,
-                    e.getDate().getDay()
+                    item.getStartTime()
                 });
 
             }
