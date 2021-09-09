@@ -23,16 +23,29 @@ public class GUICalendar extends javax.swing.JFrame {
     DefaultTableModel dtmTabla;
     Evento miEvento; 
     GUIEventDetail guiEvent; 
+    pnlTabla panelTable; 
     public GUICalendar() {
         initComponents();
+        
        guiEvent = new GUIEventDetail(); 
+                               panelTable = new pnlTabla(); 
+
         //Modelo de la tabla
         dtmTabla = new DefaultTableModel(); 
         dtmTabla.addColumn("Nombre");
         dtmTabla.addColumn("Descripcion");
         dtmTabla.addColumn("Fecha");
+        dtmTabla.addColumn("Categoria");
+
         tblDate.setModel(dtmTabla);
         
+        //Corregir el warning.
+        
+        calendar.setEnabled(false);
+        VisibilidadDatosComunes(false);
+        btnRegresar.setVisible(false);
+
+                            
         //Se añade un Listener para que el objeto AwtCalendar esté a la escucha de una evento
         calendar.addCalendarListener(new CalendarAdapter(){
             
@@ -48,8 +61,14 @@ public class GUICalendar extends javax.swing.JFrame {
                 Appointment item = new Appointment();
                 
                 //Encapsular datos
-                miEvento = new Academia(txtDato.getText(),txtDetalles.getText(), txtDetalles.getText(), "Metodos", 
-                "link"); 
+                  if(cmbCategoria.getSelectedIndex()==0){
+                    miEvento = new Academia(txtDato.getText(),txtDescripcion1.getText(), txtDetalles.getText(), "Metodos", "link"); 
+                    //Se debe declarar el constructor.
+                }
+                if(cmbCategoria.getSelectedIndex()==1){
+                    miEvento = new Recordatorio(txtDato.getText(),txtDescripcion1.getText(), txtDetalles.getText()); 
+                }
+                
                 
                 //Parametros para crear evento
                 item.setStartTime(e.getDate().addHours(8).addMinutes(25).addSeconds(35));
@@ -81,8 +100,17 @@ public class GUICalendar extends javax.swing.JFrame {
                 dtmTabla.addRow(new Object[]{
                     miEvento.getNombre(),
                     miEvento.getDescripcion() ,
-                    item.getStartTime()
+                    item.getStartTime(),
+                    miEvento.getClass().getSimpleName()
+                    
                 });
+                panelTable.miTabla.addRow(new Object []{
+                    miEvento.getNombre(),
+                    miEvento.getDescripcion() ,
+                    item.getStartTime(),
+                    miEvento.getClass().getSimpleName()
+                });
+                       
 
             }
             
@@ -130,14 +158,10 @@ public class GUICalendar extends javax.swing.JFrame {
         btgColor = new javax.swing.ButtonGroup();
         calendar = new com.mindfusion.scheduling.awt.AwtCalendar();
         chkPrueba = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDate = new javax.swing.JTable();
-        calendarOff = new javax.swing.JCheckBox();
         pnlColores = new javax.swing.JPanel();
         rbtAlta = new javax.swing.JRadioButton();
         rbtMedia = new javax.swing.JRadioButton();
         rbtBaja = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
         pnlDatos = new javax.swing.JPanel();
         txtDato = new javax.swing.JTextField();
         txtDetalles = new javax.swing.JTextField();
@@ -145,6 +169,15 @@ public class GUICalendar extends javax.swing.JFrame {
         txtDescripcion1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cmbCategoria = new javax.swing.JComboBox<>();
+        pnlGuiTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDate = new javax.swing.JTable();
+        btnRegresar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        seeTable = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 100));
@@ -153,28 +186,6 @@ public class GUICalendar extends javax.swing.JFrame {
         chkPrueba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkPruebaActionPerformed(evt);
-            }
-        });
-
-        tblDate.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblDate);
-
-        calendarOff.setText("Deshabilitar");
-        calendarOff.setAlignmentX(150.0F);
-        calendarOff.setAlignmentY(150.0F);
-        calendarOff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calendarOffActionPerformed(evt);
             }
         });
 
@@ -217,8 +228,6 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addComponent(rbtBaja)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
-
-        jButton1.setText("Crear Evento");
 
         pnlDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos generales"));
 
@@ -270,6 +279,68 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Academia", "Recordatorio" }));
+        cmbCategoria.setSelectedIndex(-1);
+        cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoriaActionPerformed(evt);
+            }
+        });
+
+        tblDate.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblDate);
+
+        javax.swing.GroupLayout pnlGuiTablaLayout = new javax.swing.GroupLayout(pnlGuiTabla);
+        pnlGuiTabla.setLayout(pnlGuiTablaLayout);
+        pnlGuiTablaLayout.setHorizontalGroup(
+            pnlGuiTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGuiTablaLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlGuiTablaLayout.setVerticalGroup(
+            pnlGuiTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlGuiTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Tabla");
+
+        seeTable.setText("Visualizar Tabla");
+        seeTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seeTableActionPerformed(evt);
+            }
+        });
+        jMenu1.add(seeTable);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,62 +348,108 @@ public class GUICalendar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(calendarOff, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(pnlColores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()
+                                .addComponent(pnlGuiTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(43, 43, 43)
+                                    .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(chkPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(btnRegresar)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(calendarOff)
-                            .addComponent(chkPrueba))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnRegresar)
+                .addGap(1, 1, 1)
+                .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlGuiTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(chkPrueba)
+                .addGap(134, 134, 134))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void VisibilidadDatosComunes(boolean val){
+        
+        txtDato.setEnabled(val);
+        txtDescripcion1.setEnabled(val);
+        txtDetalles.setEnabled(val);
+        pnlDatos.setEnabled(val);
+        calendar.setEnabled(val);
+        
 
+    }
     
-    //Desabilitar y habilitar el calendario con un boton
-    private void calendarOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarOffActionPerformed
-        if(calendarOff.isSelected()){
-            calendar.setEnabled(false);
-        }else{
-            calendar.setEnabled(true);
-        }
-    }//GEN-LAST:event_calendarOffActionPerformed
-
     private void chkPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPruebaActionPerformed
         
     }//GEN-LAST:event_chkPruebaActionPerformed
+
+    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
+        if(cmbCategoria.getSelectedIndex()==0){
+            VisibilidadDatosComunes(true);
+            //Se debe declarar el constructor.
+        }
+        if(cmbCategoria.getSelectedIndex()==1){
+            VisibilidadDatosComunes(true);
+
+        }
+            
+        
+    }//GEN-LAST:event_cmbCategoriaActionPerformed
+    public void insivibleCalendar(boolean val){
+        
+        pnlDatos.setVisible(val);
+        calendar.setVisible(val);
+        pnlColores.setVisible(val);
+        pnlGuiTabla.setVisible(val);
+        cmbCategoria.setVisible(val);
+       
+    }
+    private void seeTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeTableActionPerformed
+        insivibleCalendar(false);
+        btnRegresar.setVisible(true);
+        panelTable.setVisible(true);
+        panelTable.setSize(550, 300);
+        panelTable.setLocation(300, 50);
+        add(panelTable);
+        revalidate();
+        repaint();
+        
+    }//GEN-LAST:event_seeTableActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        panelTable.setVisible(false);
+        insivibleCalendar(true);
+        btnRegresar.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     
     public static void main(String args[]) {
@@ -377,23 +494,28 @@ public class GUICalendar extends javax.swing.JFrame {
     };
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgColor;
+    private javax.swing.JButton btnRegresar;
     private com.mindfusion.scheduling.awt.AwtCalendar calendar;
-    private javax.swing.JCheckBox calendarOff;
     private javax.swing.JCheckBox chkPrueba;
+    private javax.swing.JComboBox<String> cmbCategoria;
     private com.mindfusion.drawing.Color color1;
     private com.mindfusion.scheduling.model.CustomBrushes customBrushes1;
     private com.mindfusion.scheduling.DateStyle dateStyle1;
     private com.mindfusion.drawing.GradientBrush gradientBrush1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlColores;
     private javax.swing.JPanel pnlDatos;
+    private javax.swing.JPanel pnlGuiTabla;
     private javax.swing.JRadioButton rbtAlta;
     private javax.swing.JRadioButton rbtBaja;
     private javax.swing.JRadioButton rbtMedia;
+    private javax.swing.JMenuItem seeTable;
     private javax.swing.JTable tblDate;
     private javax.swing.JTextField txtDato;
     private javax.swing.JTextField txtDescripcion1;
