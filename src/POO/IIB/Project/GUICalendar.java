@@ -37,14 +37,17 @@ public class GUICalendar extends javax.swing.JFrame {
         //utilizo el hilo de tipo reloj para no consumir tantos recursos de la GUI
         Reloj hilo = new Reloj(lblReloj);
         //iniciliazo el hilo 
-        hilo.start();
-        
+       
+
         calendar.setEnabled(false);
 
         
        guiEvent = new GUIEventDetail(); 
-                               panelTable = new pnlTabla(); 
+        panelTable = new pnlTabla(); 
+                pnlAcademia.setVisible(false);
 
+         hilo.start();
+         
         //Modelo de la tabla
         dtmTabla = new DefaultTableModel(); 
         dtmTabla.addColumn("Nombre");
@@ -79,13 +82,15 @@ public class GUICalendar extends javax.swing.JFrame {
                 //Encapsular datos
                
                     if(cmbCategoria.getSelectedIndex()==0){
-                      miEvento = new Academia(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText(), "Metodos", "link"); 
-                      //Se debe declarar el constructor.
+                      miEvento = new Academia(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText(), txtNombreMateria.getText(), txtLink.getText()); 
+                      pnlAcademia.setVisible(true);
                       }
                       if(cmbCategoria.getSelectedIndex()==1){
                           miEvento = new Recordatorio(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText()); 
-                      }
+                        pnlAcademia.setVisible(false);
 
+                      }
+                      // Añadir clases
 
                       //Parametros para crear evento
                       item.setStartTime(e.getDate().addHours(Integer.parseInt((String)cmbHora.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos.getSelectedItem())));
@@ -97,7 +102,7 @@ public class GUICalendar extends javax.swing.JFrame {
                       item.setDetails(miEvento.getDetalles());
 
 
-
+                     
                     //Permite seleccionar un color del evento.
                     if(rbtAlta.isSelected()){
                         item.getStyle().setBrush(brushes[0]);
@@ -128,7 +133,10 @@ public class GUICalendar extends javax.swing.JFrame {
                         miEvento.getClass().getSimpleName()
                     });
                        
-
+                    //Limpiar despues del click 
+                    txtNombreEvento.setText(null);
+                    txtDescripcion.setText(null);
+                    txtDetalles.setText(null);
             }
             
             
@@ -208,12 +216,17 @@ public class GUICalendar extends javax.swing.JFrame {
         cmbMinutos1 = new javax.swing.JComboBox<>();
         cmbSegundos1 = new javax.swing.JComboBox<>();
         lblReloj = new javax.swing.JLabel();
+        pnlAcademia = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtNombreMateria = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtLink = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         seeTable = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(200, 100));
+        setLocation(new java.awt.Point(200, 50));
 
         chkPrueba.setText("Eliminar evento");
         chkPrueba.addActionListener(new java.awt.event.ActionListener() {
@@ -349,16 +362,16 @@ public class GUICalendar extends javax.swing.JFrame {
         pnlGuiTablaLayout.setHorizontalGroup(
             pnlGuiTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGuiTablaLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlGuiTablaLayout.setVerticalGroup(
             pnlGuiTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGuiTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnRegresar.setText("Regresar");
@@ -466,12 +479,47 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        lblReloj.setText("Reloj");
+        lblReloj.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblReloj.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 lblRelojPropertyChange(evt);
             }
         });
+
+        pnlAcademia.setBorder(javax.swing.BorderFactory.createTitledBorder("Academia"));
+
+        jLabel7.setText("Nombre de materia");
+
+        jLabel8.setText("Link de la reunion");
+
+        javax.swing.GroupLayout pnlAcademiaLayout = new javax.swing.GroupLayout(pnlAcademia);
+        pnlAcademia.setLayout(pnlAcademiaLayout);
+        pnlAcademiaLayout.setHorizontalGroup(
+            pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAcademiaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombreMateria)
+                    .addComponent(txtLink, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        pnlAcademiaLayout.setVerticalGroup(
+            pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAcademiaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Eventos");
 
@@ -492,70 +540,75 @@ public class GUICalendar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlGuiTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(pnlGuiTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnRegresar)
                                 .addGap(396, 396, 396)
-                                .addComponent(chkPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(chkPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(pnlAcademia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(75, 75, 75))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(57, 57, 57)
+                                .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblReloj)
-                .addGap(101, 101, 101))
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel4)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRegresar)
+                        .addComponent(chkPrueba))
+                    .addComponent(lblReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegresar)
-                            .addComponent(chkPrueba))
-                        .addGap(1, 1, 1)
                         .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblReloj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlAcademia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(pnlGuiTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(1, 1, 1)
                         .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlGuiTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -581,10 +634,12 @@ public class GUICalendar extends javax.swing.JFrame {
         
         if(cmbCategoria.getSelectedIndex()==0){
             VisibilidadDatosComunes(true);
+            pnlAcademia.setVisible(true);
             //Se debe declarar el constructor.
         }
         if(cmbCategoria.getSelectedIndex()==1){
             VisibilidadDatosComunes(true);
+            pnlAcademia.setVisible(false);
 
         }
             
@@ -648,7 +703,10 @@ public class GUICalendar extends javax.swing.JFrame {
                 
                 if(hora==Integer.parseInt(cmbHora.getSelectedItem().toString())&&minuto==Integer.parseInt(cmbMinutos.getSelectedItem().toString())&&segundo==Integer.parseInt(cmbSegundos.getSelectedItem().toString()))
                 {
-                System.out.print("igual");
+                
+                guiEvent.lblNombreEvento.setText(txtNombreEvento.getText());
+                guiEvent.txaDescripcion.setText(txtDescripcion.getText());
+                guiEvent.setVisible(rootPaneCheckingEnabled);
                 }
 
                 }catch (NullPointerException npe) {    
@@ -720,6 +778,8 @@ public class GUICalendar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -729,6 +789,7 @@ public class GUICalendar extends javax.swing.JFrame {
     private javax.swing.JLabel lblPunto3;
     private javax.swing.JLabel lblPunto4;
     private javax.swing.JLabel lblReloj;
+    private javax.swing.JPanel pnlAcademia;
     private javax.swing.JPanel pnlColores;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlGuiTabla;
@@ -739,6 +800,8 @@ public class GUICalendar extends javax.swing.JFrame {
     public javax.swing.JTable tblDate;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDetalles;
+    private javax.swing.JTextField txtLink;
     private javax.swing.JTextField txtNombreEvento;
+    private javax.swing.JTextField txtNombreMateria;
     // End of variables declaration//GEN-END:variables
 }
