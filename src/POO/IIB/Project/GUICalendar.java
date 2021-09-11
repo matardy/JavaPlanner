@@ -20,13 +20,25 @@ import javax.swing.table.DefaultTableModel;
  
 
 public class GUICalendar extends javax.swing.JFrame {
-    //Inicializo el componente tabla
+//Variables de locales del Reloj
+    Reloj miHora;
+    String horaComparada;    
+
+//Inicializo el componente tabla
     DefaultTableModel dtmTabla;
     Evento miEvento; 
     GUIEventDetail guiEvent; 
     pnlTabla panelTable; 
     public GUICalendar() {
         initComponents();
+        //RELOJ
+        //mi clase reloj se extiende del hilo
+        //con el constructor que resibe el atributo de tipo JLabel
+        //utilizo el hilo de tipo reloj para no consumir tantos recursos de la GUI
+        Reloj hilo = new Reloj(lblReloj);
+        //iniciliazo el hilo 
+        hilo.start();
+        
         calendar.setEnabled(false);
 
         
@@ -195,6 +207,7 @@ public class GUICalendar extends javax.swing.JFrame {
         cmbHora1 = new javax.swing.JComboBox<>();
         cmbMinutos1 = new javax.swing.JComboBox<>();
         cmbSegundos1 = new javax.swing.JComboBox<>();
+        lblReloj = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         seeTable = new javax.swing.JMenuItem();
@@ -453,6 +466,13 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        lblReloj.setText("Reloj");
+        lblReloj.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblRelojPropertyChange(evt);
+            }
+        });
+
         jMenu1.setText("Eventos");
 
         seeTable.setText("Visualizar Tabla");
@@ -488,12 +508,10 @@ public class GUICalendar extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(41, 41, 41)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
@@ -503,13 +521,17 @@ public class GUICalendar extends javax.swing.JFrame {
                                 .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblReloj)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegresar)
                             .addComponent(chkPrueba))
@@ -518,6 +540,8 @@ public class GUICalendar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblReloj)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,6 +578,7 @@ public class GUICalendar extends javax.swing.JFrame {
     }//GEN-LAST:event_chkPruebaActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
+        
         if(cmbCategoria.getSelectedIndex()==0){
             VisibilidadDatosComunes(true);
             //Se debe declarar el constructor.
@@ -607,6 +632,30 @@ public class GUICalendar extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_txtNombreEventoKeyReleased
+
+    private void lblRelojPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRelojPropertyChange
+        // TODO add your handling code here:
+        if(lblReloj.getText()!=""){
+        
+            String hora1=lblReloj.getText();
+
+                String[] partes = hora1.split(":");
+                
+                int hora=Integer.parseInt(partes[0]);
+                int minuto=Integer.parseInt(partes[1]);
+                int segundo=Integer.parseInt(partes[2]);
+            try{
+                
+                if(hora==Integer.parseInt(cmbHora.getSelectedItem().toString())&&minuto==Integer.parseInt(cmbMinutos.getSelectedItem().toString())&&segundo==Integer.parseInt(cmbSegundos.getSelectedItem().toString()))
+                {
+                System.out.print("igual");
+                }
+
+                }catch (NullPointerException npe) {    
+                    
+                }
+        }
+    }//GEN-LAST:event_lblRelojPropertyChange
 
     
     public static void main(String args[]) {
@@ -679,6 +728,7 @@ public class GUICalendar extends javax.swing.JFrame {
     private javax.swing.JLabel lblPunto2;
     private javax.swing.JLabel lblPunto3;
     private javax.swing.JLabel lblPunto4;
+    private javax.swing.JLabel lblReloj;
     private javax.swing.JPanel pnlColores;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlGuiTabla;
