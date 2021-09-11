@@ -9,6 +9,7 @@ import static java.lang.Thread.sleep;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;//para el formato de 24HH en el reloj
 import javax.swing.JLabel;
 
 /**
@@ -76,7 +77,8 @@ public class Reloj extends Thread{//extiendo de la clase hilo y puedo utilizar T
             //1)inicializa la fecha y hora actual
 
             //Formato de la fecha
-            SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss", Locale.UK);
+            
             //al atributo de tipo JLabel le pasamos el formatoHora
             lbl.setText(formatoHora.format(hoy));
             
