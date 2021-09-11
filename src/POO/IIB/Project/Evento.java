@@ -5,7 +5,7 @@ package POO.IIB.Project;
  *
  * @author StevG
  */
-public abstract class Evento {
+public class Evento {
     //Falta gestionar ingresar las horas
     protected String nombre; 
     protected String descripcion;
@@ -17,7 +17,6 @@ public abstract class Evento {
         this.detalles = detalles; 
     }
     
-    public abstract void mostrarEvento();
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
