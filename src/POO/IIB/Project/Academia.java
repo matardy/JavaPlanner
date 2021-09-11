@@ -5,7 +5,7 @@
  */
 package POO.IIB.Project;
 
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,10 +21,7 @@ public class Academia extends Evento{
         this.nombreMateria = nombreMateria; 
         this.linkReunion = linkReunion; 
     }
-    @Override
-    public void mostrarEvento(){
-        JOptionPane.showMessageDialog(null, "Valor");
-    }
+   
 
     public String getNombreMateria() {
         return nombreMateria;
