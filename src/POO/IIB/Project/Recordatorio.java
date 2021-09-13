@@ -10,9 +10,14 @@ package POO.IIB.Project;
  * @author StevG
  */
 public class Recordatorio extends Evento{
-    
-    public Recordatorio(String nombre, String descripcion, String detalles){
+    private int hora;
+    private int minutos;
+    private int segundos; 
+    public Recordatorio(String nombre, String descripcion, String detalles, int hora, int minutos, int segundos){
         super(nombre, descripcion, detalles);
+        this.hora = hora; 
+        this.minutos = minutos; 
+        this.segundos = segundos; 
     }
     
 }
