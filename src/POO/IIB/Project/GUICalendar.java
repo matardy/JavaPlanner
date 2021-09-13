@@ -37,7 +37,7 @@ public class GUICalendar extends javax.swing.JFrame {
         //utilizo el hilo de tipo reloj para no consumir tantos recursos de la GUI
         Reloj hilo = new Reloj(lblReloj);
         
-        //VALIDADOR
+        //VALIDADOR para verificar si son solo letras
          lblMensajeError.setVisible(false);
          
        
