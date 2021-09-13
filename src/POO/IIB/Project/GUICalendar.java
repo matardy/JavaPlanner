@@ -10,9 +10,11 @@ import com.mindfusion.scheduling.model.Appointment;
 import com.mindfusion.scheduling.model.ItemEvent;
 import com.mindfusion.scheduling.model.ItemList;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableModel;
 /**
  *
  * @author bTeam
@@ -23,6 +25,13 @@ public class GUICalendar extends javax.swing.JFrame {
 //Variables de locales del Reloj
     Reloj miHora;
     String horaComparada;    
+    String parametroHora;
+    ArrayList<String> arrHora = new ArrayList<>();
+    ArrayList<String> nombre = new ArrayList<>();
+    ArrayList<String> descripcion = new ArrayList<>();
+    ArrayList<String> fecha = new ArrayList<>(); 
+
+
 
 //Inicializo el componente tabla
     DefaultTableModel dtmTabla;
@@ -56,6 +65,7 @@ public class GUICalendar extends javax.swing.JFrame {
         dtmTabla.addColumn("Nombre");
         dtmTabla.addColumn("Descripcion");
         dtmTabla.addColumn("Fecha");
+        dtmTabla.addColumn("Hora Inicio/Fin");
         dtmTabla.addColumn("Categoria");
 
         tblDate.setModel(dtmTabla);
@@ -89,18 +99,23 @@ public class GUICalendar extends javax.swing.JFrame {
                       pnlAcademia.setVisible(true);
                       }
                     if(cmbCategoria.getSelectedIndex()==1){
-                      miEvento = new Recordatorio(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText()); 
+                      miEvento = new Recordatorio(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText(), Integer.parseInt((String)cmbHora.getSelectedItem()) , Integer.parseInt((String)cmbMinutos.getSelectedItem()), Integer.parseInt((String)cmbSegundos.getSelectedItem())); 
                       pnlAcademia.setVisible(false);
+                      
                     }
                     if(cmbCategoria.getSelectedIndex()==2){
                       miEvento = new Lista(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText()); 
                       pnlAcademia.setVisible(false);
                     }
                       //Parametros para crear evento
+                      try{
                       item.setStartTime(e.getDate().addHours(Integer.parseInt((String)cmbHora.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos.getSelectedItem())));
                       DateTime h = e.getDate().addHours(Integer.parseInt((String)cmbHora1.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos1.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos1.getSelectedItem()));
-
                       item.setEndTime(h);
+                      }catch(NullPointerException npe){
+                          
+                      }
+                      
                       item.setHeaderText(miEvento.getNombre());
                       item.setDescriptionText(miEvento.getDescripcion());
                       item.setDetails(miEvento.getDetalles());
@@ -123,20 +138,30 @@ public class GUICalendar extends javax.swing.JFrame {
 
                     System.out.println("Valor: " + item.getStartTime() + item.getEndTime());
                     //Llena los datos en la tabla.
+                    //Parametro hora
+                    parametroHora =(String)cmbHora.getSelectedItem() + ":" + (String)cmbMinutos.getSelectedItem()+ ":" + (String)cmbSegundos.getSelectedItem() ; 
                     dtmTabla.addRow(new Object[]{
                         miEvento.getNombre(),
                         miEvento.getDescripcion() ,
-                        item.getStartTime(),
+                        item.getStartTime().getDate(),
+                        parametroHora,
                         miEvento.getClass().getSimpleName()
 
                     });
                     //Llena los datos en la tabla del menu.
+                    
                     panelTable.miTabla.addRow(new Object []{
                         miEvento.getNombre(),
                         miEvento.getDescripcion() ,
-                        item.getStartTime(),
+                        item.getStartTime().getDate(),
                         miEvento.getClass().getSimpleName()
                     });
+                    
+                    arrHora.add(parametroHora);
+                    nombre.add(txtNombreEvento.getText());
+                    descripcion.add(txtDescripcion.getText());
+                    fecha.add(item.getStartTime().getDate().toString());
+                       
                        
                     //Limpiar despues del click Datos Comunes
                     txtNombreEvento.setText(null);
@@ -151,6 +176,24 @@ public class GUICalendar extends javax.swing.JFrame {
                     cmbSegundos1.setSelectedIndex(-1);
                     cmbCategoria.setSelectedIndex(-1);
                     btgColor.clearSelection();
+                    
+//                    TableModel tblM = tblDate.getModel(); 
+//                    int cols = tblM.getColumnCount(); 
+//                    int fils = tblM.getRowCount(); 
+//                    for(int i=0; i<fils; i++){
+//                        arrHora.add((String)tblM.getValueAt(i, 3));
+//                        nombre.add((String)tblM.getValueAt(i, 0));
+//                        descripcion.add((String)tblM.getValueAt(i, 1));
+//                        fecha.add((String)tblM.getValueAt(i, 2));
+//
+////                        System.out.println("Hora: " + tblM.getValueAt(i, 3));
+////                        System.out.println("Nombre: " + tblM.getValueAt(i, 0));
+////                        System.out.println("Descripcion: " + tblM.getValueAt(i, 1));
+////                        System.out.println("Fecha: " + tblM.getValueAt(i, 2));
+//
+//                    }
+                    
+
             }
             
             
@@ -606,7 +649,7 @@ public class GUICalendar extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblMensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 36, Short.MAX_VALUE))))
+                        .addGap(0, 44, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -738,23 +781,40 @@ public class GUICalendar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEventoKeyReleased
 
     private void lblRelojPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRelojPropertyChange
-        // TODO add your handling code here:
+        // TODO add your handling code here:\
+        
         if(lblReloj.getText()!=""){
         
             String hora1=lblReloj.getText();
 
-                String[] partes = hora1.split(":");
-                
-                int hora=Integer.parseInt(partes[0]);
-                int minuto=Integer.parseInt(partes[1]);
-                int segundo=Integer.parseInt(partes[2]);
+//                String[] partes = hora1.split(":");
+//                //String [] partesComparar = parametroHora.split(":");
+//                int hora=Integer.parseInt(partes[0]);
+//                int minuto=Integer.parseInt(partes[1]);
+//                int segundo=Integer.parseInt(partes[2]);
+                /*
+                int horaC=Integer.parseInt(partesComparar[0]);
+                int minutoC=Integer.parseInt(partesComparar[1]);
+                int segundoC=Integer.parseInt(partesComparar[2]);
+                */
+            int val = 0 ; 
+
             try{
                 
-                if(hora==Integer.parseInt(cmbHora.getSelectedItem().toString())&&minuto==Integer.parseInt(cmbMinutos.getSelectedItem().toString())&&segundo==Integer.parseInt(cmbSegundos.getSelectedItem().toString()))
-                {
-                
-                guiEvent.lblNombreEvento.setText(txtNombreEvento.getText());
-                guiEvent.txaDescripcion.setText(txtDescripcion.getText());
+                //if(hora==Integer.parseInt(cmbHora.getSelectedItem().toString())&&minuto==Integer.parseInt(cmbMinutos.getSelectedItem().toString())&&segundo==Integer.parseInt(cmbSegundos.getSelectedItem().toString()))
+               if(arrHora.contains(hora1)){
+                System.out.println("Entro al if");
+
+                    for(int i=0; i<arrHora.size(); i++){
+                        if(arrHora.get(i).equals(hora1)){
+                            System.out.println("ar: "+ arrHora.get(i));
+                            val = i;
+                        }
+                    }
+                    //Arrays.asList(array1).indexOf(8);
+                    System.out.println("Hola: " + val);
+                guiEvent.lblNombreEvento.setText(nombre.get(val));
+                guiEvent.txaDescripcion.setText(descripcion.get(val));
                 guiEvent.setVisible(rootPaneCheckingEnabled);
                 
                 }
