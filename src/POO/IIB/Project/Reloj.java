@@ -70,7 +70,6 @@ public class Reloj extends Thread{//extiendo de la clase hilo y puedo utilizar T
     //metodo para que cargue el reloj 
     @Override
     public void run(){
-        guiR=new GUICalendar();
         while(true){
             Date hoy = new Date ();//atributo de la clase Date, encapsula la hora
             //y fecha actual, permite tener dos construnctores:  
