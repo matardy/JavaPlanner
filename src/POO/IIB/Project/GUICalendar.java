@@ -36,6 +36,9 @@ public class GUICalendar extends javax.swing.JFrame {
         //con el constructor que resibe el atributo de tipo JLabel
         //utilizo el hilo de tipo reloj para no consumir tantos recursos de la GUI
         Reloj hilo = new Reloj(lblReloj);
+        
+        //VALIDADOR
+         lblMensajeError.setVisible(false);
          
        
 
