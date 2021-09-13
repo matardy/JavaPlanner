@@ -232,6 +232,7 @@ public class GUICalendar extends javax.swing.JFrame {
         txtNombreMateria = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtLink = new javax.swing.JTextField();
+        lblMensajeError = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         seeTable = new javax.swing.JMenuItem();
@@ -287,6 +288,11 @@ public class GUICalendar extends javax.swing.JFrame {
         );
 
         pnlDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos generales"));
+        pnlDatos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pnlDatosKeyReleased(evt);
+            }
+        });
 
         txtNombreEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +305,19 @@ public class GUICalendar extends javax.swing.JFrame {
             }
         });
 
+        txtDetalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDetallesKeyReleased(evt);
+            }
+        });
+
         jLabel3.setText("Detalles del Evento");
+
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyReleased(evt);
+            }
+        });
 
         jLabel1.setText("Nombre del Evento");
 
@@ -532,6 +550,10 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblMensajeError.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        lblMensajeError.setForeground(new java.awt.Color(255, 0, 51));
+        lblMensajeError.setText("Ingresar solo letras");
+
         jMenu1.setText("Eventos");
 
         seeTable.setText("Visualizar Tabla");
@@ -567,18 +589,21 @@ public class GUICalendar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 248, Short.MAX_VALUE)
+                        .addGap(0, 310, Short.MAX_VALUE)
                         .addComponent(lblReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 36, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -602,8 +627,13 @@ public class GUICalendar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(lblMensajeError)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -731,6 +761,30 @@ public class GUICalendar extends javax.swing.JFrame {
                 }
         }
     }//GEN-LAST:event_lblRelojPropertyChange
+//VALIDADOR PARA QUE EL USUARIO SOLO REGISTRE PALABRAS
+    private void pnlDatosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlDatosKeyReleased
+        // TODO add your handling code here:
+        if(Validador.verificarNombre(txtNombreEvento.getText()))
+            lblMensajeError.setVisible(false);
+        else
+            lblMensajeError.setVisible(true);
+    }//GEN-LAST:event_pnlDatosKeyReleased
+
+    private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
+        // TODO add your handling code here:
+        if(Validador.verificarDescripcion(txtDescripcion.getText()))
+            lblMensajeError.setVisible(false);
+        else
+            lblMensajeError.setVisible(true);
+    }//GEN-LAST:event_txtDescripcionKeyReleased
+
+    private void txtDetallesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDetallesKeyReleased
+        // TODO add your handling code here:
+        if(Validador.verificarDetalles(txtDetalles.getText()))
+            lblMensajeError.setVisible(false);
+        else
+            lblMensajeError.setVisible(true);
+    }//GEN-LAST:event_txtDetallesKeyReleased
 
     
     public static void main(String args[]) {
@@ -801,6 +855,7 @@ public class GUICalendar extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMensajeError;
     private javax.swing.JLabel lblPunto1;
     private javax.swing.JLabel lblPunto2;
     private javax.swing.JLabel lblPunto3;
