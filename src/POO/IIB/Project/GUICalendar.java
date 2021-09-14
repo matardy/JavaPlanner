@@ -72,7 +72,7 @@ public class GUICalendar extends javax.swing.JFrame {
         
         //Implementacion para UI/UIX
         calendar.setEnabled(false);
-        VisibilidadDatosComunes(false);
+        visibilidadDatosComunes(false);
         btnRegresar.setVisible(false);
 
                             
@@ -690,7 +690,7 @@ public class GUICalendar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void VisibilidadDatosComunes(boolean val){
+    public void visibilidadDatosComunes(boolean val){
         
         txtNombreEvento.setEnabled(val);
         txtDescripcion.setEnabled(val);
@@ -702,15 +702,7 @@ public class GUICalendar extends javax.swing.JFrame {
         cmbHora1.setEnabled(val);
         cmbMinutos1.setEnabled(val);
         cmbSegundos1.setEnabled(val);
-        //Prueba esconder RBT
-        //rbtAlta.setVisible(val);
-        /*rbtAlta.setEnabled(val);
-        rbtMedia.setEnabled(val);
-        rbtBaja.setEnabled(val);*/
-        //calendar.setEnabled(val);
-
         
-
     }
     
     private void chkPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPruebaActionPerformed
@@ -718,26 +710,26 @@ public class GUICalendar extends javax.swing.JFrame {
     }//GEN-LAST:event_chkPruebaActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        
+        //Funcon para que el USR pueda ingresar datos
+        //si escogio un categoria
         if(cmbCategoria.getSelectedIndex()==0){
-            VisibilidadDatosComunes(true);
+            visibilidadDatosComunes(true);
             pnlAcademia.setVisible(true);
-            //Se debe declarar el constructor.
         }
-        if(cmbCategoria.getSelectedIndex()==1){
-            VisibilidadDatosComunes(true);
-            pnlAcademia.setVisible(false);
-
-        }
-        if(cmbCategoria.getSelectedIndex()==2){
-            VisibilidadDatosComunes(true);
-            pnlAcademia.setVisible(false);
-
-        }
-            
         
+        if(cmbCategoria.getSelectedIndex()==1){
+            visibilidadDatosComunes(true);
+            pnlAcademia.setVisible(false);
+        }
+        
+        if(cmbCategoria.getSelectedIndex()==2){
+            visibilidadDatosComunes(true);
+            pnlAcademia.setVisible(false);
+        }
+           
     }//GEN-LAST:event_cmbCategoriaActionPerformed
-    public void insivibleCalendar(boolean val){
+    
+    public void visibilidadCalendario(boolean val){
         
         pnlDatos.setVisible(val);
         calendar.setVisible(val);
@@ -750,8 +742,12 @@ public class GUICalendar extends javax.swing.JFrame {
         pnlHoras.setVisible(val);
        
     }
+    
     private void seeTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeTableActionPerformed
-        insivibleCalendar(false);
+        
+        //Se ocultan objetos de la GUICalendar para mostrar busquedas
+        //especificas de eventos
+        visibilidadCalendario(false);
         btnRegresar.setVisible(true);
         panelTable.setVisible(true);
         panelTable.setSize(700, 500);
@@ -760,12 +756,12 @@ public class GUICalendar extends javax.swing.JFrame {
         
         revalidate();
         repaint();
-        
     }//GEN-LAST:event_seeTableActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        
         panelTable.setVisible(false);
-        insivibleCalendar(true);
+        visibilidadCalendario(true);
         btnRegresar.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -774,15 +770,7 @@ public class GUICalendar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEventoActionPerformed
 
     private void txtNombreEventoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEventoKeyReleased
-       if(txtNombreEvento.getText().trim().isEmpty()){
-                calendar.setEnabled(false);
-                JOptionPane.showMessageDialog(rootPane, "Los eventos deben tener un nombre para ser creados. \nSi desea eliminar un evento, seleccione eliminar y luego click en el evento.");
-        }else{
-            calendar.setEnabled(true);
-       }
-        
-        
-        
+       
     }//GEN-LAST:event_txtNombreEventoKeyReleased
 
     private void lblRelojPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRelojPropertyChange
