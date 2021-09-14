@@ -770,12 +770,13 @@ public class GUICalendar extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEventoActionPerformed
 
     private void txtNombreEventoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEventoKeyReleased
-       
+       calendar.setEnabled(true);
     }//GEN-LAST:event_txtNombreEventoKeyReleased
 
     private void lblRelojPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblRelojPropertyChange
-        // TODO add your handling code here:\
         
+        //Se implementa la funcionalidad de aviso de Notificacion por medio de
+        //GUIEventDetaiil en sincronizacion con reloj
         if(lblReloj.getText()!=""){
             String hora1=lblReloj.getText();
             int val = 0 ; 
@@ -783,7 +784,6 @@ public class GUICalendar extends javax.swing.JFrame {
                if(arrHora.contains(hora1)){
                     for(int i=0; i<arrHora.size(); i++){
                         if(arrHora.get(i).equals(hora1)){
-                            System.out.println("ar: "+ arrHora.get(i));
                             val = i;
                         }
                     }
@@ -791,8 +791,8 @@ public class GUICalendar extends javax.swing.JFrame {
                 guiEvent.txaDescripcion.setText(descripcion.get(val));
                 guiEvent.setVisible(rootPaneCheckingEnabled);
                 }
-                }catch (NullPointerException npe) {    
-                }
+            }catch (NullPointerException npe) {    
+            }
         }
     }//GEN-LAST:event_lblRelojPropertyChange
 //VALIDADOR PARA QUE EL USUARIO SOLO REGISTRE PALABRAS
