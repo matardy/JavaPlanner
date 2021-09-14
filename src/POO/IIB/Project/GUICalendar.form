@@ -67,7 +67,6 @@
                       <Component id="lblReloj" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnlDatos" alignment="0" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -82,67 +81,74 @@
                           </Group>
                           <Component id="pnlColores" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="calendar" min="-2" pref="724" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="calendar" min="-2" pref="701" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="pnlAcademia" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pnlHoras" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pnlAcademia" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlHoras" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                                      <Component id="chkPrueba" min="-2" pref="114" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="chkPrueba" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="pnlGuiTabla" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
-              <Component id="pnlGuiTabla" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnRegresar" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblReloj" min="-2" pref="30" max="-2" attributes="0"/>
-              </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="pnlHoras" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlAcademia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="chkPrueba" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnRegresar" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblReloj" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="pnlHoras" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlAcademia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="chkPrueba" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                              <Component id="pnlGuiTabla" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="lblCategoria" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmbCategoria" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="pnlDatos" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pnlColores" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="calendar" min="-2" pref="533" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="lblCategoria" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cmbCategoria" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pnlDatos" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pnlColores" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="calendar" min="-2" pref="443" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="pnlGuiTabla" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -389,7 +395,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane1" alignment="1" pref="157" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="1" pref="156" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -543,7 +549,44 @@
         <Component class="javax.swing.JComboBox" name="cmbHora">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="24">
+              <StringArray count="25">
+                <StringItem index="0" value="00"/>
+                <StringItem index="1" value="01"/>
+                <StringItem index="2" value="02"/>
+                <StringItem index="3" value="03"/>
+                <StringItem index="4" value="04"/>
+                <StringItem index="5" value="05"/>
+                <StringItem index="6" value="06"/>
+                <StringItem index="7" value="07"/>
+                <StringItem index="8" value="08"/>
+                <StringItem index="9" value="09"/>
+                <StringItem index="10" value="10"/>
+                <StringItem index="11" value="11"/>
+                <StringItem index="12" value="12"/>
+                <StringItem index="13" value="13"/>
+                <StringItem index="14" value="14"/>
+                <StringItem index="15" value="15"/>
+                <StringItem index="16" value="16"/>
+                <StringItem index="17" value="17"/>
+                <StringItem index="18" value="18"/>
+                <StringItem index="19" value="19"/>
+                <StringItem index="20" value="20"/>
+                <StringItem index="21" value="21"/>
+                <StringItem index="22" value="22"/>
+                <StringItem index="23" value="23"/>
+                <StringItem index="24" value="24"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbMinutos">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="61">
                 <StringItem index="0" value="01"/>
                 <StringItem index="1" value="02"/>
                 <StringItem index="2" value="03"/>
@@ -568,82 +611,45 @@
                 <StringItem index="21" value="22"/>
                 <StringItem index="22" value="23"/>
                 <StringItem index="23" value="24"/>
+                <StringItem index="24" value="25"/>
+                <StringItem index="25" value="26"/>
+                <StringItem index="26" value="27"/>
+                <StringItem index="27" value="28"/>
+                <StringItem index="28" value="29"/>
+                <StringItem index="29" value="30"/>
+                <StringItem index="30" value="31"/>
+                <StringItem index="31" value="32"/>
+                <StringItem index="32" value="33"/>
+                <StringItem index="33" value="34"/>
+                <StringItem index="34" value="35"/>
+                <StringItem index="35" value="36"/>
+                <StringItem index="36" value="37"/>
+                <StringItem index="37" value="38"/>
+                <StringItem index="38" value="39"/>
+                <StringItem index="39" value="40"/>
+                <StringItem index="40" value="41"/>
+                <StringItem index="41" value="42"/>
+                <StringItem index="42" value="43"/>
+                <StringItem index="43" value="44"/>
+                <StringItem index="44" value="45"/>
+                <StringItem index="45" value="46"/>
+                <StringItem index="46" value="47"/>
+                <StringItem index="47" value="48"/>
+                <StringItem index="48" value="49"/>
+                <StringItem index="49" value="50"/>
+                <StringItem index="50" value="51"/>
+                <StringItem index="51" value="52"/>
+                <StringItem index="52" value="53"/>
+                <StringItem index="53" value="54"/>
+                <StringItem index="54" value="55"/>
+                <StringItem index="55" value="56"/>
+                <StringItem index="56" value="57"/>
+                <StringItem index="57" value="58"/>
+                <StringItem index="58" value="59"/>
+                <StringItem index="59" value="60"/>
+                <StringItem index="60" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="21"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbMinutos">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="60">
-                <StringItem index="0" value="01"/>
-                <StringItem index="1" value="02"/>
-                <StringItem index="2" value="03"/>
-                <StringItem index="3" value="04"/>
-                <StringItem index="4" value="05"/>
-                <StringItem index="5" value="06"/>
-                <StringItem index="6" value="08"/>
-                <StringItem index="7" value="09"/>
-                <StringItem index="8" value="10"/>
-                <StringItem index="9" value="11"/>
-                <StringItem index="10" value="12"/>
-                <StringItem index="11" value="13"/>
-                <StringItem index="12" value="14"/>
-                <StringItem index="13" value="15"/>
-                <StringItem index="14" value="16"/>
-                <StringItem index="15" value="17"/>
-                <StringItem index="16" value="18"/>
-                <StringItem index="17" value="19"/>
-                <StringItem index="18" value="20"/>
-                <StringItem index="19" value="21"/>
-                <StringItem index="20" value="22"/>
-                <StringItem index="21" value="23"/>
-                <StringItem index="22" value="24"/>
-                <StringItem index="23" value="25"/>
-                <StringItem index="24" value="26"/>
-                <StringItem index="25" value="27"/>
-                <StringItem index="26" value="28"/>
-                <StringItem index="27" value="29"/>
-                <StringItem index="28" value="30"/>
-                <StringItem index="29" value="31"/>
-                <StringItem index="30" value="32"/>
-                <StringItem index="31" value="33"/>
-                <StringItem index="32" value="34"/>
-                <StringItem index="33" value="35"/>
-                <StringItem index="34" value="36"/>
-                <StringItem index="35" value="37"/>
-                <StringItem index="36" value="38"/>
-                <StringItem index="37" value="39"/>
-                <StringItem index="38" value="40"/>
-                <StringItem index="39" value="41"/>
-                <StringItem index="40" value="42"/>
-                <StringItem index="41" value="43"/>
-                <StringItem index="42" value="44"/>
-                <StringItem index="43" value="45"/>
-                <StringItem index="44" value="46"/>
-                <StringItem index="45" value="47"/>
-                <StringItem index="46" value="48"/>
-                <StringItem index="47" value="49"/>
-                <StringItem index="48" value="50"/>
-                <StringItem index="49" value="51"/>
-                <StringItem index="50" value="52"/>
-                <StringItem index="51" value="53"/>
-                <StringItem index="52" value="54"/>
-                <StringItem index="53" value="55"/>
-                <StringItem index="54" value="56"/>
-                <StringItem index="55" value="57"/>
-                <StringItem index="56" value="58"/>
-                <StringItem index="57" value="59"/>
-                <StringItem index="58" value="60"/>
-                <StringItem index="59" value=" "/>
-              </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMinutosActionPerformed"/>
@@ -656,70 +662,70 @@
         <Component class="javax.swing.JComboBox" name="cmbSegundos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="60">
+              <StringArray count="61">
                 <StringItem index="0" value="01"/>
                 <StringItem index="1" value="02"/>
                 <StringItem index="2" value="03"/>
                 <StringItem index="3" value="04"/>
                 <StringItem index="4" value="05"/>
                 <StringItem index="5" value="06"/>
-                <StringItem index="6" value="08"/>
-                <StringItem index="7" value="09"/>
-                <StringItem index="8" value="10"/>
-                <StringItem index="9" value="11"/>
-                <StringItem index="10" value="12"/>
-                <StringItem index="11" value="13"/>
-                <StringItem index="12" value="14"/>
-                <StringItem index="13" value="15"/>
-                <StringItem index="14" value="16"/>
-                <StringItem index="15" value="17"/>
-                <StringItem index="16" value="18"/>
-                <StringItem index="17" value="19"/>
-                <StringItem index="18" value="20"/>
-                <StringItem index="19" value="21"/>
-                <StringItem index="20" value="22"/>
-                <StringItem index="21" value="23"/>
-                <StringItem index="22" value="24"/>
-                <StringItem index="23" value="25"/>
-                <StringItem index="24" value="26"/>
-                <StringItem index="25" value="27"/>
-                <StringItem index="26" value="28"/>
-                <StringItem index="27" value="29"/>
-                <StringItem index="28" value="30"/>
-                <StringItem index="29" value="31"/>
-                <StringItem index="30" value="32"/>
-                <StringItem index="31" value="33"/>
-                <StringItem index="32" value="34"/>
-                <StringItem index="33" value="35"/>
-                <StringItem index="34" value="36"/>
-                <StringItem index="35" value="37"/>
-                <StringItem index="36" value="38"/>
-                <StringItem index="37" value="39"/>
-                <StringItem index="38" value="40"/>
-                <StringItem index="39" value="41"/>
-                <StringItem index="40" value="42"/>
-                <StringItem index="41" value="43"/>
-                <StringItem index="42" value="44"/>
-                <StringItem index="43" value="45"/>
-                <StringItem index="44" value="46"/>
-                <StringItem index="45" value="47"/>
-                <StringItem index="46" value="48"/>
-                <StringItem index="47" value="49"/>
-                <StringItem index="48" value="50"/>
-                <StringItem index="49" value="51"/>
-                <StringItem index="50" value="52"/>
-                <StringItem index="51" value="53"/>
-                <StringItem index="52" value="54"/>
-                <StringItem index="53" value="55"/>
-                <StringItem index="54" value="56"/>
-                <StringItem index="55" value="57"/>
-                <StringItem index="56" value="58"/>
-                <StringItem index="57" value="59"/>
-                <StringItem index="58" value="60"/>
-                <StringItem index="59" value=" "/>
+                <StringItem index="6" value="07"/>
+                <StringItem index="7" value="08"/>
+                <StringItem index="8" value="09"/>
+                <StringItem index="9" value="10"/>
+                <StringItem index="10" value="11"/>
+                <StringItem index="11" value="12"/>
+                <StringItem index="12" value="13"/>
+                <StringItem index="13" value="14"/>
+                <StringItem index="14" value="15"/>
+                <StringItem index="15" value="16"/>
+                <StringItem index="16" value="17"/>
+                <StringItem index="17" value="18"/>
+                <StringItem index="18" value="19"/>
+                <StringItem index="19" value="20"/>
+                <StringItem index="20" value="21"/>
+                <StringItem index="21" value="22"/>
+                <StringItem index="22" value="23"/>
+                <StringItem index="23" value="24"/>
+                <StringItem index="24" value="25"/>
+                <StringItem index="25" value="26"/>
+                <StringItem index="26" value="27"/>
+                <StringItem index="27" value="28"/>
+                <StringItem index="28" value="29"/>
+                <StringItem index="29" value="30"/>
+                <StringItem index="30" value="31"/>
+                <StringItem index="31" value="32"/>
+                <StringItem index="32" value="33"/>
+                <StringItem index="33" value="34"/>
+                <StringItem index="34" value="35"/>
+                <StringItem index="35" value="36"/>
+                <StringItem index="36" value="37"/>
+                <StringItem index="37" value="38"/>
+                <StringItem index="38" value="39"/>
+                <StringItem index="39" value="40"/>
+                <StringItem index="40" value="41"/>
+                <StringItem index="41" value="42"/>
+                <StringItem index="42" value="43"/>
+                <StringItem index="43" value="44"/>
+                <StringItem index="44" value="45"/>
+                <StringItem index="45" value="46"/>
+                <StringItem index="46" value="47"/>
+                <StringItem index="47" value="48"/>
+                <StringItem index="48" value="49"/>
+                <StringItem index="49" value="50"/>
+                <StringItem index="50" value="51"/>
+                <StringItem index="51" value="52"/>
+                <StringItem index="52" value="53"/>
+                <StringItem index="53" value="54"/>
+                <StringItem index="54" value="55"/>
+                <StringItem index="55" value="56"/>
+                <StringItem index="56" value="57"/>
+                <StringItem index="57" value="58"/>
+                <StringItem index="58" value="59"/>
+                <StringItem index="59" value="60"/>
+                <StringItem index="60" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="3"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -745,7 +751,44 @@
         <Component class="javax.swing.JComboBox" name="cmbHora1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="24">
+              <StringArray count="25">
+                <StringItem index="0" value="00"/>
+                <StringItem index="1" value="01"/>
+                <StringItem index="2" value="02"/>
+                <StringItem index="3" value="03"/>
+                <StringItem index="4" value="04"/>
+                <StringItem index="5" value="05"/>
+                <StringItem index="6" value="06"/>
+                <StringItem index="7" value="07"/>
+                <StringItem index="8" value="08"/>
+                <StringItem index="9" value="09"/>
+                <StringItem index="10" value="10"/>
+                <StringItem index="11" value="11"/>
+                <StringItem index="12" value="12"/>
+                <StringItem index="13" value="13"/>
+                <StringItem index="14" value="14"/>
+                <StringItem index="15" value="15"/>
+                <StringItem index="16" value="16"/>
+                <StringItem index="17" value="17"/>
+                <StringItem index="18" value="18"/>
+                <StringItem index="19" value="19"/>
+                <StringItem index="20" value="20"/>
+                <StringItem index="21" value="21"/>
+                <StringItem index="22" value="22"/>
+                <StringItem index="23" value="23"/>
+                <StringItem index="24" value="24"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbMinutos1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="61">
                 <StringItem index="0" value="01"/>
                 <StringItem index="1" value="02"/>
                 <StringItem index="2" value="03"/>
@@ -770,82 +813,45 @@
                 <StringItem index="21" value="22"/>
                 <StringItem index="22" value="23"/>
                 <StringItem index="23" value="24"/>
+                <StringItem index="24" value="25"/>
+                <StringItem index="25" value="26"/>
+                <StringItem index="26" value="27"/>
+                <StringItem index="27" value="28"/>
+                <StringItem index="28" value="29"/>
+                <StringItem index="29" value="30"/>
+                <StringItem index="30" value="31"/>
+                <StringItem index="31" value="32"/>
+                <StringItem index="32" value="33"/>
+                <StringItem index="33" value="34"/>
+                <StringItem index="34" value="35"/>
+                <StringItem index="35" value="36"/>
+                <StringItem index="36" value="37"/>
+                <StringItem index="37" value="38"/>
+                <StringItem index="38" value="39"/>
+                <StringItem index="39" value="40"/>
+                <StringItem index="40" value="41"/>
+                <StringItem index="41" value="42"/>
+                <StringItem index="42" value="43"/>
+                <StringItem index="43" value="44"/>
+                <StringItem index="44" value="45"/>
+                <StringItem index="45" value="46"/>
+                <StringItem index="46" value="47"/>
+                <StringItem index="47" value="48"/>
+                <StringItem index="48" value="49"/>
+                <StringItem index="49" value="50"/>
+                <StringItem index="50" value="51"/>
+                <StringItem index="51" value="52"/>
+                <StringItem index="52" value="53"/>
+                <StringItem index="53" value="54"/>
+                <StringItem index="54" value="55"/>
+                <StringItem index="55" value="56"/>
+                <StringItem index="56" value="57"/>
+                <StringItem index="57" value="58"/>
+                <StringItem index="58" value="59"/>
+                <StringItem index="59" value="60"/>
+                <StringItem index="60" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="22"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbMinutos1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="60">
-                <StringItem index="0" value="01"/>
-                <StringItem index="1" value="02"/>
-                <StringItem index="2" value="03"/>
-                <StringItem index="3" value="04"/>
-                <StringItem index="4" value="05"/>
-                <StringItem index="5" value="06"/>
-                <StringItem index="6" value="08"/>
-                <StringItem index="7" value="09"/>
-                <StringItem index="8" value="10"/>
-                <StringItem index="9" value="11"/>
-                <StringItem index="10" value="12"/>
-                <StringItem index="11" value="13"/>
-                <StringItem index="12" value="14"/>
-                <StringItem index="13" value="15"/>
-                <StringItem index="14" value="16"/>
-                <StringItem index="15" value="17"/>
-                <StringItem index="16" value="18"/>
-                <StringItem index="17" value="19"/>
-                <StringItem index="18" value="20"/>
-                <StringItem index="19" value="21"/>
-                <StringItem index="20" value="22"/>
-                <StringItem index="21" value="23"/>
-                <StringItem index="22" value="24"/>
-                <StringItem index="23" value="25"/>
-                <StringItem index="24" value="26"/>
-                <StringItem index="25" value="27"/>
-                <StringItem index="26" value="28"/>
-                <StringItem index="27" value="29"/>
-                <StringItem index="28" value="30"/>
-                <StringItem index="29" value="31"/>
-                <StringItem index="30" value="32"/>
-                <StringItem index="31" value="33"/>
-                <StringItem index="32" value="34"/>
-                <StringItem index="33" value="35"/>
-                <StringItem index="34" value="36"/>
-                <StringItem index="35" value="37"/>
-                <StringItem index="36" value="38"/>
-                <StringItem index="37" value="39"/>
-                <StringItem index="38" value="40"/>
-                <StringItem index="39" value="41"/>
-                <StringItem index="40" value="42"/>
-                <StringItem index="41" value="43"/>
-                <StringItem index="42" value="44"/>
-                <StringItem index="43" value="45"/>
-                <StringItem index="44" value="46"/>
-                <StringItem index="45" value="47"/>
-                <StringItem index="46" value="48"/>
-                <StringItem index="47" value="49"/>
-                <StringItem index="48" value="50"/>
-                <StringItem index="49" value="51"/>
-                <StringItem index="50" value="52"/>
-                <StringItem index="51" value="53"/>
-                <StringItem index="52" value="54"/>
-                <StringItem index="53" value="55"/>
-                <StringItem index="54" value="56"/>
-                <StringItem index="55" value="57"/>
-                <StringItem index="56" value="58"/>
-                <StringItem index="57" value="59"/>
-                <StringItem index="58" value="60"/>
-                <StringItem index="59" value=" "/>
-              </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="4"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -855,70 +861,70 @@
         <Component class="javax.swing.JComboBox" name="cmbSegundos1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="60">
+              <StringArray count="61">
                 <StringItem index="0" value="01"/>
                 <StringItem index="1" value="02"/>
                 <StringItem index="2" value="03"/>
                 <StringItem index="3" value="04"/>
                 <StringItem index="4" value="05"/>
                 <StringItem index="5" value="06"/>
-                <StringItem index="6" value="08"/>
-                <StringItem index="7" value="09"/>
-                <StringItem index="8" value="10"/>
-                <StringItem index="9" value="11"/>
-                <StringItem index="10" value="12"/>
-                <StringItem index="11" value="13"/>
-                <StringItem index="12" value="14"/>
-                <StringItem index="13" value="15"/>
-                <StringItem index="14" value="16"/>
-                <StringItem index="15" value="17"/>
-                <StringItem index="16" value="18"/>
-                <StringItem index="17" value="19"/>
-                <StringItem index="18" value="20"/>
-                <StringItem index="19" value="21"/>
-                <StringItem index="20" value="22"/>
-                <StringItem index="21" value="23"/>
-                <StringItem index="22" value="24"/>
-                <StringItem index="23" value="25"/>
-                <StringItem index="24" value="26"/>
-                <StringItem index="25" value="27"/>
-                <StringItem index="26" value="28"/>
-                <StringItem index="27" value="29"/>
-                <StringItem index="28" value="30"/>
-                <StringItem index="29" value="31"/>
-                <StringItem index="30" value="32"/>
-                <StringItem index="31" value="33"/>
-                <StringItem index="32" value="34"/>
-                <StringItem index="33" value="35"/>
-                <StringItem index="34" value="36"/>
-                <StringItem index="35" value="37"/>
-                <StringItem index="36" value="38"/>
-                <StringItem index="37" value="39"/>
-                <StringItem index="38" value="40"/>
-                <StringItem index="39" value="41"/>
-                <StringItem index="40" value="42"/>
-                <StringItem index="41" value="43"/>
-                <StringItem index="42" value="44"/>
-                <StringItem index="43" value="45"/>
-                <StringItem index="44" value="46"/>
-                <StringItem index="45" value="47"/>
-                <StringItem index="46" value="48"/>
-                <StringItem index="47" value="49"/>
-                <StringItem index="48" value="50"/>
-                <StringItem index="49" value="51"/>
-                <StringItem index="50" value="52"/>
-                <StringItem index="51" value="53"/>
-                <StringItem index="52" value="54"/>
-                <StringItem index="53" value="55"/>
-                <StringItem index="54" value="56"/>
-                <StringItem index="55" value="57"/>
-                <StringItem index="56" value="58"/>
-                <StringItem index="57" value="59"/>
-                <StringItem index="58" value="60"/>
-                <StringItem index="59" value=" "/>
+                <StringItem index="6" value="07"/>
+                <StringItem index="7" value="08"/>
+                <StringItem index="8" value="09"/>
+                <StringItem index="9" value="10"/>
+                <StringItem index="10" value="11"/>
+                <StringItem index="11" value="12"/>
+                <StringItem index="12" value="13"/>
+                <StringItem index="13" value="14"/>
+                <StringItem index="14" value="15"/>
+                <StringItem index="15" value="16"/>
+                <StringItem index="16" value="17"/>
+                <StringItem index="17" value="18"/>
+                <StringItem index="18" value="19"/>
+                <StringItem index="19" value="20"/>
+                <StringItem index="20" value="21"/>
+                <StringItem index="21" value="22"/>
+                <StringItem index="22" value="23"/>
+                <StringItem index="23" value="24"/>
+                <StringItem index="24" value="25"/>
+                <StringItem index="25" value="26"/>
+                <StringItem index="26" value="27"/>
+                <StringItem index="27" value="28"/>
+                <StringItem index="28" value="29"/>
+                <StringItem index="29" value="30"/>
+                <StringItem index="30" value="31"/>
+                <StringItem index="31" value="32"/>
+                <StringItem index="32" value="33"/>
+                <StringItem index="33" value="34"/>
+                <StringItem index="34" value="35"/>
+                <StringItem index="35" value="36"/>
+                <StringItem index="36" value="37"/>
+                <StringItem index="37" value="38"/>
+                <StringItem index="38" value="39"/>
+                <StringItem index="39" value="40"/>
+                <StringItem index="40" value="41"/>
+                <StringItem index="41" value="42"/>
+                <StringItem index="42" value="43"/>
+                <StringItem index="43" value="44"/>
+                <StringItem index="44" value="45"/>
+                <StringItem index="45" value="46"/>
+                <StringItem index="46" value="47"/>
+                <StringItem index="47" value="48"/>
+                <StringItem index="48" value="49"/>
+                <StringItem index="49" value="50"/>
+                <StringItem index="50" value="51"/>
+                <StringItem index="51" value="52"/>
+                <StringItem index="52" value="53"/>
+                <StringItem index="53" value="54"/>
+                <StringItem index="54" value="55"/>
+                <StringItem index="55" value="56"/>
+                <StringItem index="56" value="57"/>
+                <StringItem index="57" value="58"/>
+                <StringItem index="58" value="59"/>
+                <StringItem index="59" value="60"/>
+                <StringItem index="60" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="5"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
