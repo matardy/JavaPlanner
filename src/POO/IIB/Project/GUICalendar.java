@@ -143,13 +143,7 @@ public class GUICalendar extends javax.swing.JFrame {
                     });
                     //Llena los datos en la tabla del menu.
                     
-                    panelTable.miTabla.addRow(new Object []{
-                        miEvento.getNombre(),
-                        miEvento.getDescripcion() ,
-                        item.getStartTime().getDate(),
-                        parametroHora,
-                        miEvento.getClass().getSimpleName()
-                    });
+                   
                     
                     arrHora.add(parametroHora);
                     nombre.add(txtNombreEvento.getText());
@@ -464,13 +458,18 @@ public class GUICalendar extends javax.swing.JFrame {
         lblPunto2.setText(":");
 
         cmbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
-        cmbHora.setSelectedIndex(-1);
+        cmbHora.setSelectedIndex(21);
 
         cmbMinutos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", " " }));
-        cmbMinutos.setSelectedIndex(-1);
+        cmbMinutos.setSelectedIndex(3);
+        cmbMinutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMinutosActionPerformed(evt);
+            }
+        });
 
         cmbSegundos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", " " }));
-        cmbSegundos.setSelectedIndex(-1);
+        cmbSegundos.setSelectedIndex(3);
 
         lblPunto3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblPunto3.setText(":");
@@ -479,13 +478,13 @@ public class GUICalendar extends javax.swing.JFrame {
         lblPunto4.setText(":");
 
         cmbHora1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
-        cmbHora1.setSelectedIndex(-1);
+        cmbHora1.setSelectedIndex(22);
 
         cmbMinutos1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", " " }));
-        cmbMinutos1.setSelectedIndex(-1);
+        cmbMinutos1.setSelectedIndex(4);
 
         cmbSegundos1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", " " }));
-        cmbSegundos1.setSelectedIndex(-1);
+        cmbSegundos1.setSelectedIndex(5);
 
         javax.swing.GroupLayout pnlHorasLayout = new javax.swing.GroupLayout(pnlHoras);
         pnlHoras.setLayout(pnlHorasLayout);
@@ -819,6 +818,10 @@ public class GUICalendar extends javax.swing.JFrame {
         else
             lblMensajeError.setVisible(true);
     }//GEN-LAST:event_txtDetallesKeyReleased
+
+    private void cmbMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMinutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMinutosActionPerformed
 
     
     public static void main(String args[]) {

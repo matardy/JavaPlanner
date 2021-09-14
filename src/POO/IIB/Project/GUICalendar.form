@@ -570,7 +570,7 @@
                 <StringItem index="23" value="24"/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="21"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -643,8 +643,11 @@
                 <StringItem index="59" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMinutosActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -716,7 +719,7 @@
                 <StringItem index="59" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="3"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -769,7 +772,7 @@
                 <StringItem index="23" value="24"/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="22"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -842,7 +845,7 @@
                 <StringItem index="59" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="4"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -915,7 +918,7 @@
                 <StringItem index="59" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="selectedIndex" type="int" value="5"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
