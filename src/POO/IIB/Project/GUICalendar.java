@@ -18,42 +18,49 @@ import javax.swing.table.DefaultTableModel;
  
 
 public class GUICalendar extends javax.swing.JFrame {
-//Variables de locales del Reloj
+    
+    //Inicializo componentes principales de GUICalendar
+    DefaultTableModel dtmTabla;
+    Evento miEvento; 
+    GUIEventDetail guiEvent; 
+    pnlTabla panelTable; 
+    
+    //Variables para implementar el Reloj tiempo real y comparar eventos con
+    //tiempo
     Reloj miHora;
     String horaComparada;    
     String parametroHora;
+    
+    //Array declarados para iplementar la funcionalidad del recordatorio
     public ArrayList<String> arrHora = new ArrayList<>();
     public ArrayList<String> nombre = new ArrayList<>();
     public ArrayList<String> descripcion = new ArrayList<>();
     public ArrayList<String> fecha = new ArrayList<>(); 
     public ArrayList<String> categoria = new ArrayList<>();
 
-
-//Inicializo el componente tabla
-    DefaultTableModel dtmTabla;
-    Evento miEvento; 
-    GUIEventDetail guiEvent; 
-    pnlTabla panelTable; 
     public GUICalendar() {
         initComponents();
+        //Pantalla completa GUICalendar
         this.setExtendedState(MAXIMIZED_BOTH);
-        //RELOJ
-        //mi clase reloj se extiende del hilo
+        
+        //Inicializamos GUIs complementarias
+        guiEvent = new GUIEventDetail(); 
+        panelTable = new pnlTabla(); 
+        //Oculto un panel condicional
+        pnlAcademia.setVisible(false);
+        
+        //Mi clase reloj se extiende del hilo
         //con el constructor que resibe el atributo de tipo JLabel
         //utilizo el hilo de tipo reloj para no consumir tantos recursos de la GUI
         Reloj hilo = new Reloj(lblReloj);
+        //Iniciliazo el hilo del Reloj
+        hilo.start();
         
-        //VALIDADOR para verificar si son solo letras
-         lblMensajeError.setVisible(false);
+        //Validador para verificar si son solo letras
+        lblMensajeError.setVisible(false);
         calendar.setEnabled(false);
-
-       guiEvent = new GUIEventDetail(); 
-        panelTable = new pnlTabla(); 
-                pnlAcademia.setVisible(false);
-        //iniciliazo el hilo del Reloj
-         hilo.start();
-         
-        //Modelo de la tabla
+ 
+        //Modelo de la tabla de GUICalendar
         dtmTabla = new DefaultTableModel(); 
         dtmTabla.addColumn("Nombre");
         dtmTabla.addColumn("Descripcion");
@@ -63,14 +70,14 @@ public class GUICalendar extends javax.swing.JFrame {
 
         tblDate.setModel(dtmTabla);
         
-        //Corregir el warning.
-        
+        //Implementacion para UI/UIX
         calendar.setEnabled(false);
         VisibilidadDatosComunes(false);
         btnRegresar.setVisible(false);
 
                             
-        //Se añade un Listener para que el objeto AwtCalendar esté a la escucha de una evento
+        //Se añade un Listener para que el objeto AwtCalendar esté a la escucha 
+        //de un evento
         calendar.addCalendarListener(new CalendarAdapter(){
             
             /*
@@ -84,36 +91,41 @@ public class GUICalendar extends javax.swing.JFrame {
                 //Objeto del tipo Appointment para crear eventos en el calendario
                 Appointment item = new Appointment();
                 
-                
                 //Encapsular datos
-               
+                    
                     if(cmbCategoria.getSelectedIndex()==0){
-                      miEvento = new Academia(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText(), txtNombreMateria.getText(), txtLink.getText()); 
+                      miEvento = new Academia(txtNombreEvento.getText(),
+                              txtDescripcion.getText(), txtDetalles.getText(), 
+                              txtNombreMateria.getText(), txtLink.getText()); 
                       pnlAcademia.setVisible(true);
-                      }
+                    }
+                    
                     if(cmbCategoria.getSelectedIndex()==1){
-                      miEvento = new Recordatorio(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText()); 
+                      miEvento = new Recordatorio(txtNombreEvento.getText(),
+                              txtDescripcion.getText(), txtDetalles.getText()); 
                       pnlAcademia.setVisible(false);
-                      
                     }
+                    
                     if(cmbCategoria.getSelectedIndex()==2){
-                      miEvento = new Lista(txtNombreEvento.getText(),txtDescripcion.getText(), txtDetalles.getText()); 
+                      miEvento = new Lista(txtNombreEvento.getText(),
+                              txtDescripcion.getText(), txtDetalles.getText()); 
                       pnlAcademia.setVisible(false);
                     }
-                      //Parametros para crear evento
-                      try{
-                      item.setStartTime(e.getDate().addHours(Integer.parseInt((String)cmbHora.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos.getSelectedItem())));
-                      DateTime h = e.getDate().addHours(Integer.parseInt((String)cmbHora1.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos1.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos1.getSelectedItem()));
-                      item.setEndTime(h);
-                      }catch(NullPointerException npe){
-                          
-                      }
-                      
-                      item.setHeaderText(miEvento.getNombre());
-                      item.setDescriptionText(miEvento.getDescripcion());
-                      item.setDetails(miEvento.getDetalles());
-
-
+                    //Parametros para crear evento
+                    //try-catch para evitar que el evento se cree sin datos
+                    try{
+                    DateTime startTime = e.getDate().addHours(Integer.parseInt((String)cmbHora.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos.getSelectedItem()));
+                    item.setStartTime(startTime);
+                    DateTime endTime = e.getDate().addHours(Integer.parseInt((String)cmbHora1.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos1.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos1.getSelectedItem()));
+                    item.setEndTime(endTime);
+                    }catch(NullPointerException npe){
+                        JOptionPane.showMessageDialog(rootPane, 
+                                "LLene todos los campos");
+                    }
+                    
+                    item.setHeaderText(miEvento.getNombre());
+                    item.setDescriptionText(miEvento.getDescripcion());
+                    item.setDetails(miEvento.getDetalles());
                      
                     //Permite seleccionar un color del evento.
                     if(rbtAlta.isSelected()){
@@ -126,31 +138,37 @@ public class GUICalendar extends javax.swing.JFrame {
                         item.getStyle().setBrush(brushes[2]);
                     }
 
-                   //Aniade el item creado al objeto AwtCalendar.
+                   //Añade el item creado al objeto AwtCalendar.
                     calendar.getSchedule().getItems().add(item);
-
-                    System.out.println("Valor: " + item.getStartTime() + item.getEndTime());
-                    //Llena los datos en la tabla.
-                    //Parametro hora
-                    parametroHora =(String)cmbHora.getSelectedItem() + ":" + (String)cmbMinutos.getSelectedItem()+ ":" + (String)cmbSegundos.getSelectedItem() ; 
+                    
+                    //Parametro hora, se crea un formato de tipo (HH:mm:ss)
+                    parametroHora =(String)cmbHora.getSelectedItem() + ":" + 
+                            (String)cmbMinutos.getSelectedItem()+ ":" + 
+                            (String)cmbSegundos.getSelectedItem();
+                    
+                    //Formato de fecha (dd/mm/aa)
+                    String dateFormat = String.valueOf(item.getStartTime().getDate().getDay())+
+                            "/"+String.valueOf(item.getStartTime().getDate().getMonth())+
+                            "/"+String.valueOf(item.getStartTime().getDate().getYear());
+                    
+                    //Llena los datos en la tabla
                     dtmTabla.addRow(new Object[]{
                         miEvento.getNombre(),
                         miEvento.getDescripcion() ,
-                        item.getStartTime().getDate(),
+                        dateFormat,
                         parametroHora,
                         miEvento.getClass().getSimpleName()
-
                     });
-                    //Llena los datos en la tabla del menu.
                     
-                   
-                    
+                    //Se llenan los Array para la notificacion con la GUIEventDetail
                     arrHora.add(parametroHora);
                     nombre.add(txtNombreEvento.getText());
                     descripcion.add(txtDescripcion.getText());
                     fecha.add(item.getStartTime().getDate().toString());
                     categoria.add(miEvento.getClass().getSimpleName()); 
                     
+                    //Lleno los Arrays necesarios para implementar la busqueda 
+                    //de Eventos
                     panelTable.arrHora.add(parametroHora);
                     panelTable.nombre.add(txtNombreEvento.getText());
                     panelTable.descripcion.add(txtDescripcion.getText());
@@ -158,25 +176,25 @@ public class GUICalendar extends javax.swing.JFrame {
                     panelTable.categoria.add(miEvento.getClass().getSimpleName()); 
                        
                     //Limpiar despues del click Datos Comunes
-                    txtNombreEvento.setText(null);
-                    txtDescripcion.setText(null);
-                    txtDetalles.setText(null);
-                    /*cmbHora.setSelectedIndex(-1); si limpio la hora no arroja la GUIEventDetail
-                    cmbMinutos.setSelectedIndex(-1);
-                    cmbSegundos.setSelectedIndex(-1);
-                    cmbSegundos.setSelectedIndex(-1);*/
-                    cmbHora1.setSelectedIndex(-1);
-                    cmbMinutos1.setSelectedIndex(-1);
-                    cmbSegundos1.setSelectedIndex(-1);
-                    cmbCategoria.setSelectedIndex(-1);
-                    btgColor.clearSelection();
-                    
-
-                    
-
+                    limpiarGui();
             }
             
-            
+            //Funcion Limpiar 
+            public void limpiarGui(){
+                txtNombreEvento.setText(null);
+                txtDescripcion.setText(null);
+                txtDetalles.setText(null);
+                cmbHora.setSelectedIndex(-1);
+                cmbMinutos.setSelectedIndex(-1);
+                cmbSegundos.setSelectedIndex(-1);
+                cmbSegundos.setSelectedIndex(-1);
+                cmbHora1.setSelectedIndex(-1);
+                cmbMinutos1.setSelectedIndex(-1);
+                cmbSegundos1.setSelectedIndex(-1);
+                cmbCategoria.setSelectedIndex(-1);
+                btgColor.clearSelection();
+            }
+                    
             //Listener al hacer click en un evento creado.
             @Override
             public void itemClick(ItemMouseEvent h){ 
