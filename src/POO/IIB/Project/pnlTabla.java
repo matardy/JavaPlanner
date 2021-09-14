@@ -5,6 +5,7 @@
  */
 package POO.IIB.Project;
 
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,21 +15,36 @@ import javax.swing.table.DefaultTableModel;
  * @author StevG
  */
 public class pnlTabla extends javax.swing.JPanel {
-    DefaultTableModel miTabla; 
     GUICalendar guiC; 
+    DefaultTableModel tablaBusqueda; 
+    public ArrayList<String> arrHora = new ArrayList<>();
+    public ArrayList<String> nombre = new ArrayList<>();
+    public ArrayList<String> descripcion = new ArrayList<>();
+    public ArrayList<String> fecha = new ArrayList<>(); 
+    public ArrayList<String> categoria = new ArrayList<>();
     /**
      * Creates new form pnlTabla
      */
     public pnlTabla() {
         initComponents();
 
-        miTabla = new DefaultTableModel();
-        miTabla.addColumn("Nomre");
-        miTabla.addColumn("Nomre");
-        miTabla.addColumn("Nomre");
-        miTabla.addColumn("Nomre");
-        tblDos.setModel(miTabla);
+        
        
+        tablaBusqueda = new DefaultTableModel(); 
+        tablaBusqueda.addColumn("Nombre");
+        tablaBusqueda.addColumn("Descripcion");
+        tablaBusqueda.addColumn("Fecha");
+        tablaBusqueda.addColumn("Hora Inicio/Fin");
+        tablaBusqueda.addColumn("Categoria");
+        tblBusqueda.setModel(tablaBusqueda);
+        
+        /*
+        static ArrayList<String> arrHora = new ArrayList<>();
+        static ArrayList<String> nombre = new ArrayList<>();
+        static ArrayList<String> descripcion = new ArrayList<>();
+        static ArrayList<String> fecha = new ArrayList<>(); 
+        static ArrayList<String> categoria = new ArrayList<>();
+        */
     }
 
     /**
@@ -40,10 +56,29 @@ public class pnlTabla extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tblPnl = new javax.swing.JScrollPane();
-        tblDos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblBusqueda = new javax.swing.JTable();
+        btnLimpiarTabla = new javax.swing.JButton();
 
-        tblDos.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setText("Buscar por nombre de evento");
+
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyReleased(evt);
+            }
+        });
+
+        tblBusqueda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,29 +89,84 @@ public class pnlTabla extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblPnl.setViewportView(tblDos);
+        jScrollPane1.setViewportView(tblBusqueda);
+
+        btnLimpiarTabla.setText("Limpiar tabla");
+        btnLimpiarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarTablaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(tblPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(btnLimpiarTabla)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(tblPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLimpiarTabla)
+                .addContainerGap(308, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyReleased
+              
+
+    }//GEN-LAST:event_txtBusquedaKeyReleased
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        for(int i=0; i<arrHora.size(); i++){
+           if(txtBusqueda.getText().equals(nombre.get(i))){
+               tablaBusqueda.addRow(new Object[]{
+                        nombre.get(i),
+                        descripcion.get(i),
+                        fecha.get(i),
+                        arrHora.get(i),
+                        categoria.get(i)
+                    });
+           }
+             
+       }
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
+    private void btnLimpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarTablaActionPerformed
+        tablaBusqueda.setRowCount(0);
+    }//GEN-LAST:event_btnLimpiarTablaActionPerformed
+
+    private void txtBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyPressed
+        
+    }//GEN-LAST:event_txtBusquedaKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable tblDos;
-    private javax.swing.JScrollPane tblPnl;
+    private javax.swing.JButton btnLimpiarTabla;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tblBusqueda;
+    private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }
