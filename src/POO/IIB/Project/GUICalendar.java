@@ -195,33 +195,28 @@ public class GUICalendar extends javax.swing.JFrame {
                 btgColor.clearSelection();
             }
                     
-            //Listener al hacer click en un evento creado.
+            //A la escucha de un click en un evento creado.
             @Override
             public void itemClick(ItemMouseEvent h){ 
 
-                // Esta es la clave para convertir en un itemEvent que ya esta registrado con su id.
+                //Se hace un Down Casting para trabajar con los datos encapsulados
+                //obtenidos al hacer Click
                 ItemEvent actualItem = (ItemEvent)h; 
-                
-                /*
-                //Acciones para ver la capacidad de hacer click en un evento
-                System.out.println("ID: " + name.getItem().getId());
-                ItemList y = calendar.getSchedule().getItems();
-                System.out.println("Item List: " + calendar.getSchedule().getItems());
-                System.out.println("tipo: " + name.getItem().getId().getClass());
-                */   
                     
                 //Ocultar eventos
                 if(chkPrueba.isSelected()){
                     //Hacer items events no visibles
-                    actualItem.getItem().setVisible(false);//No los elimina!
+                    actualItem.getItem().setVisible(false);
                 }else{
-                    //GUIDetalles del evento
+                    
+                //GUIEventDetail del evento
+                //AGREGAR MAS COSAS :)MADE
                 guiEvent.lblNombreEvento.setText(actualItem.getItem().getHeaderText());
                 guiEvent.txaDescripcion.setText(actualItem.getItem().getDescriptionText());
-               
+                
+                //Visible despues de hacer Click
                 guiEvent.setVisible(rootPaneCheckingEnabled);
                 }
-                
                 
             }
         });
