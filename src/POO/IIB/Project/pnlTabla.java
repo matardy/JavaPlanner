@@ -22,6 +22,7 @@ public class pnlTabla extends javax.swing.JPanel {
     public ArrayList<String> descripcion = new ArrayList<>();
     public ArrayList<String> fecha = new ArrayList<>(); 
     public ArrayList<String> categoria = new ArrayList<>();
+    public ArrayList<String> prioridadArr = new ArrayList<>(); 
     /**
      * Creates new form pnlTabla
      */
@@ -35,6 +36,7 @@ public class pnlTabla extends javax.swing.JPanel {
         tablaBusqueda.addColumn("Descripcion");
         tablaBusqueda.addColumn("Fecha");
         tablaBusqueda.addColumn("Hora Inicio/Fin");
+        tablaBusqueda.addColumn("Prioridad");
         tablaBusqueda.addColumn("Categoria");
         tblBusqueda.setModel(tablaBusqueda);
         
@@ -61,8 +63,14 @@ public class pnlTabla extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusqueda = new javax.swing.JTable();
         btnLimpiarTabla = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cmbCategoria = new javax.swing.JComboBox<>();
+        cmbPrioridad = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
 
-        jLabel1.setText("Buscar por nombre de evento");
+        jLabel1.setText("Buscar por nombre de evento:");
 
         txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,25 +106,55 @@ public class pnlTabla extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Click en Enter para buscar");
+
+        jLabel3.setText("Buscar por Categoria:");
+
+        jLabel4.setText("Buscar por Prioridad:");
+
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Academia", "Recordatorio", "Lista" }));
+        cmbCategoria.setSelectedIndex(-1);
+
+        cmbPrioridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alta ", "Media", "Baja" }));
+        cmbPrioridad.setSelectedIndex(-1);
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(btnLimpiarTabla)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(248, 248, 248)
+                                .addComponent(btnLimpiarTabla))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(225, 225, 225)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                                    .addComponent(cmbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbPrioridad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +162,23 @@ public class pnlTabla extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLimpiarTabla)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addGap(192, 192, 192))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,16 +189,17 @@ public class pnlTabla extends javax.swing.JPanel {
 
     private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
         for(int i=0; i<arrHora.size(); i++){
-           if(txtBusqueda.getText().equals(nombre.get(i))){
+           if(txtBusqueda.getText().equals(nombre.get(i)) || cmbCategoria.getSelectedItem().equals(categoria.get(i)) 
+                   || cmbPrioridad.getSelectedItem().equals(prioridadArr.get(i))){
                tablaBusqueda.addRow(new Object[]{
                         nombre.get(i),
                         descripcion.get(i),
                         fecha.get(i),
                         arrHora.get(i),
+                        prioridadArr.get(i),
                         categoria.get(i)
                     });
            }
-             
        }
     }//GEN-LAST:event_txtBusquedaActionPerformed
 
@@ -161,10 +211,32 @@ public class pnlTabla extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtBusquedaKeyPressed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       for(int i=0; i<arrHora.size(); i++){
+           if(txtBusqueda.getText().equals(nombre.get(i)) || cmbCategoria.getSelectedItem().equals(categoria.get(i)) 
+                   || cmbPrioridad.getSelectedItem().equals(prioridadArr.get(i))){
+               tablaBusqueda.addRow(new Object[]{
+                        nombre.get(i),
+                        descripcion.get(i),
+                        fecha.get(i),
+                        arrHora.get(i),
+                        prioridadArr.get(i),
+                        categoria.get(i)
+                    });
+           }  
+       }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnLimpiarTabla;
+    private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JComboBox<String> cmbPrioridad;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblBusqueda;
     private javax.swing.JTextField txtBusqueda;
