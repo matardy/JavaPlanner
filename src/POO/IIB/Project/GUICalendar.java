@@ -814,7 +814,7 @@ public class GUICalendar extends javax.swing.JFrame {
 
     private void txtDetallesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDetallesKeyReleased
         // TODO add your handling code here:
-        if(Validador.verificarDetalles(txtDetalles.getText()))
+        if(Validador.verificarDetalles(txtDetalles.getText()))  //permitir espacios, letras, etc, no signos
             lblMensajeError.setVisible(false);
         else
             lblMensajeError.setVisible(true);
