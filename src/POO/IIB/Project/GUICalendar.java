@@ -806,7 +806,7 @@ public class GUICalendar extends javax.swing.JFrame {
 
     private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
         // TODO add your handling code here:
-        if(Validador.verificarDescripcion(txtDescripcion.getText()))
+        if(Validador.verificarDescripcion(txtDescripcion.getText())) //permitir espacios, letras etc, no signos
             lblMensajeError.setVisible(false);
         else
             lblMensajeError.setVisible(true);
