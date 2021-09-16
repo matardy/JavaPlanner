@@ -8,6 +8,7 @@ import com.mindfusion.scheduling.ItemMouseEvent;
 import com.mindfusion.scheduling.ResourceDateEvent;
 import com.mindfusion.scheduling.model.Appointment;
 import com.mindfusion.scheduling.model.ItemEvent;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +42,8 @@ public class GUICalendar extends javax.swing.JFrame {
     public GUICalendar() {
         initComponents();
         //Pantalla completa GUICalendar
+        //CAMBIAR EL LOGO HECHO A JAVAPLANNER
+        Seticon();
         this.setExtendedState(MAXIMIZED_BOTH);
         
         //Inicializamos GUIs complementarias
@@ -277,6 +280,7 @@ public class GUICalendar extends javax.swing.JFrame {
         seeTable = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JavaPlanner");
         setLocation(new java.awt.Point(200, 50));
 
         chkPrueba.setText("Eliminar evento");
@@ -852,6 +856,10 @@ public class GUICalendar extends javax.swing.JFrame {
                 new GUICalendar().setVisible(true);
             }
         });
+    }
+    //para cambiar el logotipo
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("LogoJavaPlanner.png")));
     }
  
     
