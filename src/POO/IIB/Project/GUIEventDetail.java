@@ -31,8 +31,24 @@ public class GUIEventDetail extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaDescripcion = new javax.swing.JTextArea();
+        lblDescripcion = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblHoraInicial = new javax.swing.JLabel();
+        lblPuntos = new javax.swing.JLabel();
+        lblMinutoInicial = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblSegundoInicial = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblMinutoFinal = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblSegundoFinal = new javax.swing.JLabel();
+        lblHoraFinal = new javax.swing.JLabel();
+        lblPuntos1 = new javax.swing.JLabel();
+        lblPuntos2 = new javax.swing.JLabel();
+        lblPuntos3 = new javax.swing.JLabel();
+        lblPuntos5 = new javax.swing.JLabel();
+        lblTipoEvento = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setLocation(new java.awt.Point(300, 200));
 
@@ -47,9 +63,51 @@ public class GUIEventDetail extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Descripcion");
 
-        txaDescripcion.setColumns(20);
-        txaDescripcion.setRows(5);
-        jScrollPane1.setViewportView(txaDescripcion);
+        lblDescripcion.setText("jLabel4");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Hora Inicio");
+
+        lblHoraInicial.setText("jLabel5");
+
+        lblPuntos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos.setText(":");
+
+        lblMinutoInicial.setText("jLabel6");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText(":");
+
+        lblSegundoInicial.setText("jLabel8");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setText("Hora Final");
+
+        lblMinutoFinal.setText("jLabel6");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setText(":");
+
+        lblSegundoFinal.setText("jLabel8");
+
+        lblHoraFinal.setText("jLabel5");
+
+        lblPuntos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos1.setText(":");
+
+        lblPuntos2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos2.setText(":");
+
+        lblPuntos3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos3.setText(":");
+
+        lblPuntos5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos5.setText(":");
+
+        lblTipoEvento.setText("jLabel1");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("Tipo de evento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,33 +118,94 @@ public class GUIEventDetail extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPuntos5)
+                        .addGap(54, 54, 54)
+                        .addComponent(lblTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel9))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHoraFinal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblPuntos1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMinutoFinal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblSegundoFinal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHoraInicial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblPuntos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMinutoInicial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblSegundoInicial))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPuntos2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPuntos3)
+                                .addGap(44, 44, 44)))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescripcion)
+                            .addComponent(lblNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoEvento)
+                    .addComponent(jLabel15)
+                    .addComponent(lblPuntos5))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEvento)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(lblPuntos2))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblDescripcion)
+                    .addComponent(lblPuntos3))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblHoraInicial)
+                    .addComponent(lblPuntos)
+                    .addComponent(lblMinutoInicial)
+                    .addComponent(jLabel7)
+                    .addComponent(lblSegundoInicial))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblHoraFinal)
+                    .addComponent(lblPuntos1)
+                    .addComponent(lblMinutoFinal)
+                    .addComponent(jLabel11)
+                    .addComponent(lblSegundoFinal))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,10 +248,26 @@ public class GUIEventDetail extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel lblDescripcion;
+    public javax.swing.JLabel lblHoraFinal;
+    public javax.swing.JLabel lblHoraInicial;
+    public javax.swing.JLabel lblMinutoFinal;
+    public javax.swing.JLabel lblMinutoInicial;
     public javax.swing.JLabel lblNombreEvento;
-    public javax.swing.JTextArea txaDescripcion;
+    private javax.swing.JLabel lblPuntos;
+    private javax.swing.JLabel lblPuntos1;
+    private javax.swing.JLabel lblPuntos2;
+    private javax.swing.JLabel lblPuntos3;
+    private javax.swing.JLabel lblPuntos5;
+    public javax.swing.JLabel lblSegundoFinal;
+    public javax.swing.JLabel lblSegundoInicial;
+    public javax.swing.JLabel lblTipoEvento;
     // End of variables declaration//GEN-END:variables
 }
