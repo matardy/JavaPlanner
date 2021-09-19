@@ -150,9 +150,12 @@ public class GUICalendar extends javax.swing.JFrame {
                     calendar.getSchedule().getItems().add(item);
                     
                     //Parametro hora, se crea un formato de tipo (HH:mm:ss)
-                    parametroHora =(String)cmbHora.getSelectedItem() + ":" + 
-                            (String)cmbMinutos.getSelectedItem()+ ":" + 
-                            (String)cmbSegundos.getSelectedItem();
+                    //if(cmbHora.getSelectedItem().toString()>cmbHora1.getSelectedItem().toString()){
+                        parametroHora =(String)cmbHora.getSelectedItem() + ":" + 
+                        (String)cmbMinutos.getSelectedItem()+ ":" + 
+                        (String)cmbSegundos.getSelectedItem(); 
+                    //}
+                    
                     
                     //Formato de fecha (dd/mm/aa)
                     String dateFormat = String.valueOf(item.getStartTime().getDate().getDay())+
@@ -229,8 +232,21 @@ public class GUICalendar extends javax.swing.JFrame {
                     
                 //GUIEventDetail del evento
                 //AGREGAR MAS COSAS :)MADE
+                if(nombre.contains(actualItem.getItem().getHeaderText()))
+                    
+                //guiEvent.lblTipoEvento.setText();
                 guiEvent.lblNombreEvento.setText(actualItem.getItem().getHeaderText());
-                guiEvent.txaDescripcion.setText(actualItem.getItem().getDescriptionText());
+                guiEvent.lblDescripcion.setText(actualItem.getItem().getDescriptionText());
+                guiEvent.lblHoraInicial.setText(Integer.toString(actualItem.getItem().getStartTime().getHour()));
+                guiEvent.lblMinutoInicial.setText(Integer.toString(actualItem.getItem().getStartTime().getMinute()));
+                guiEvent.lblSegundoInicial.setText(Integer.toString(actualItem.getItem().getStartTime().getSecond()));
+                guiEvent.lblHoraFinal.setText(Integer.toString(actualItem.getItem().getEndTime().getHour()));
+                guiEvent.lblMinutoFinal.setText(Integer.toString(actualItem.getItem().getEndTime().getMinute()));
+                guiEvent.lblSegundoFinal.setText(Integer.toString(actualItem.getItem().getEndTime().getSecond()));
+                
+                
+                
+                
                 
                 //Visible despues de hacer Click
                 guiEvent.setVisible(rootPaneCheckingEnabled);
@@ -794,7 +810,7 @@ public class GUICalendar extends javax.swing.JFrame {
         if(lblReloj.getText()!=""){
             String hora1=lblReloj.getText();
             int val = 0 ; 
-            //try{
+            
                if(arrHora.contains(hora1)){
                     for(int i=0; i<arrHora.size(); i++){
                         if(arrHora.get(i).equals(hora1)){
@@ -802,11 +818,11 @@ public class GUICalendar extends javax.swing.JFrame {
                         }
                     }
                 guiEvent.lblNombreEvento.setText(nombre.get(val));
-                guiEvent.txaDescripcion.setText(descripcion.get(val));
+                guiEvent.lblDescripcion.setText(descripcion.get(val));
+                
                 guiEvent.setVisible(rootPaneCheckingEnabled);
                 }
-            //}catch (NullPointerException npe) {    
-            //}
+            
         }
     }//GEN-LAST:event_lblRelojPropertyChange
 //VALIDADOR PARA QUE EL USUARIO SOLO REGISTRE PALABRAS
