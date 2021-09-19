@@ -12,7 +12,7 @@ package POO.IIB.Project;
  * @author StevG
  */
 public class Academia extends Evento{
-    String nombreMateria;
+    String nombreMateria;//Atributos propios de la clase
     String linkReunion; 
     
     public Academia(String nombre, String descripcion, String detalles,
