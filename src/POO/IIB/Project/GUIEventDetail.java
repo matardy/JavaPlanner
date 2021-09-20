@@ -32,10 +32,12 @@ public class GUIEventDetail extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        lblHoraInicial = new javax.swing.JLabel();
-        lblPuntos = new javax.swing.JLabel();
-        lblMinutoInicial = new javax.swing.JLabel();
+        lblPuntos2 = new javax.swing.JLabel();
+        lblPuntos3 = new javax.swing.JLabel();
+        lblPuntos5 = new javax.swing.JLabel();
+        lblTipoEvento = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        pnlTiempo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lblSegundoInicial = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -44,11 +46,10 @@ public class GUIEventDetail extends javax.swing.JFrame {
         lblSegundoFinal = new javax.swing.JLabel();
         lblHoraFinal = new javax.swing.JLabel();
         lblPuntos1 = new javax.swing.JLabel();
-        lblPuntos2 = new javax.swing.JLabel();
-        lblPuntos3 = new javax.swing.JLabel();
-        lblPuntos5 = new javax.swing.JLabel();
-        lblTipoEvento = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblHoraInicial = new javax.swing.JLabel();
+        lblPuntos = new javax.swing.JLabel();
+        lblMinutoInicial = new javax.swing.JLabel();
 
         setLocation(new java.awt.Point(300, 200));
 
@@ -65,15 +66,21 @@ public class GUIEventDetail extends javax.swing.JFrame {
 
         lblDescripcion.setText("jLabel4");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Hora Inicio");
+        lblPuntos2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos2.setText(":");
 
-        lblHoraInicial.setText("jLabel5");
+        lblPuntos3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos3.setText(":");
 
-        lblPuntos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPuntos.setText(":");
+        lblPuntos5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos5.setText(":");
 
-        lblMinutoInicial.setText("jLabel6");
+        lblTipoEvento.setText("jLabel1");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("Tipo de evento");
+
+        pnlTiempo.setBorder(javax.swing.BorderFactory.createTitledBorder("Hora de inicio y fin"));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText(":");
@@ -95,30 +102,77 @@ public class GUIEventDetail extends javax.swing.JFrame {
         lblPuntos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPuntos1.setText(":");
 
-        lblPuntos2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPuntos2.setText(":");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Hora Inicio");
 
-        lblPuntos3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPuntos3.setText(":");
+        lblHoraInicial.setText("jLabel5");
 
-        lblPuntos5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPuntos5.setText(":");
+        lblPuntos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPuntos.setText(":");
 
-        lblTipoEvento.setText("jLabel1");
+        lblMinutoInicial.setText("jLabel6");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel15.setText("Tipo de evento");
+        javax.swing.GroupLayout pnlTiempoLayout = new javax.swing.GroupLayout(pnlTiempo);
+        pnlTiempo.setLayout(pnlTiempoLayout);
+        pnlTiempoLayout.setHorizontalGroup(
+            pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTiempoLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addGroup(pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9))
+                .addGap(26, 26, 26)
+                .addGroup(pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlTiempoLayout.createSequentialGroup()
+                        .addComponent(lblHoraFinal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPuntos1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMinutoFinal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSegundoFinal))
+                    .addGroup(pnlTiempoLayout.createSequentialGroup()
+                        .addComponent(lblHoraInicial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPuntos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMinutoInicial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblSegundoInicial)))
+                .addGap(6, 6, 6))
+        );
+        pnlTiempoLayout.setVerticalGroup(
+            pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTiempoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblHoraInicial)
+                    .addComponent(lblPuntos)
+                    .addComponent(lblMinutoInicial)
+                    .addComponent(jLabel7)
+                    .addComponent(lblSegundoInicial))
+                .addGap(26, 26, 26)
+                .addGroup(pnlTiempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblHoraFinal)
+                    .addComponent(lblPuntos1)
+                    .addComponent(lblMinutoFinal)
+                    .addComponent(jLabel11)
+                    .addComponent(lblSegundoFinal))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel15)
@@ -126,32 +180,6 @@ public class GUIEventDetail extends javax.swing.JFrame {
                         .addComponent(lblPuntos5)
                         .addGap(54, 54, 54)
                         .addComponent(lblTipoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel9))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblHoraFinal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblPuntos1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblMinutoFinal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblSegundoFinal))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblHoraInicial)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblPuntos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblMinutoInicial)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblSegundoInicial))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -167,7 +195,16 @@ public class GUIEventDetail extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDescripcion)
                             .addComponent(lblNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(41, 41, 41))
+                .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(pnlTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,23 +226,9 @@ public class GUIEventDetail extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(lblDescripcion)
                     .addComponent(lblPuntos3))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lblHoraInicial)
-                    .addComponent(lblPuntos)
-                    .addComponent(lblMinutoInicial)
-                    .addComponent(jLabel7)
-                    .addComponent(lblSegundoInicial))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(lblHoraFinal)
-                    .addComponent(lblPuntos1)
-                    .addComponent(lblMinutoFinal)
-                    .addComponent(jLabel11)
-                    .addComponent(lblSegundoFinal))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(pnlTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,5 +292,6 @@ public class GUIEventDetail extends javax.swing.JFrame {
     public javax.swing.JLabel lblSegundoFinal;
     public javax.swing.JLabel lblSegundoInicial;
     public javax.swing.JLabel lblTipoEvento;
+    public javax.swing.JPanel pnlTiempo;
     // End of variables declaration//GEN-END:variables
 }
