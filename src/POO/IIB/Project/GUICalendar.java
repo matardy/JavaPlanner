@@ -31,6 +31,7 @@ public class GUICalendar extends javax.swing.JFrame {
     Reloj miHora;
     String horaComparada;    
     String parametroHora;
+    String parametroHoraNotificacion;
     
     //Array declarados para iplementar la funcionalidad del recordatorio
     public ArrayList<String> arrHora = new ArrayList<>();
@@ -150,10 +151,16 @@ public class GUICalendar extends javax.swing.JFrame {
                     calendar.getSchedule().getItems().add(item);
                     
                     //Parametro hora, se crea un formato de tipo (HH:mm:ss)
-                    //if(cmbHora.getSelectedItem().toString()>cmbHora1.getSelectedItem().toString()){
                         parametroHora =(String)cmbHora.getSelectedItem() + ":" + 
                         (String)cmbMinutos.getSelectedItem()+ ":" + 
-                        (String)cmbSegundos.getSelectedItem(); 
+                        (String)cmbSegundos.getSelectedItem() + " / " + 
+                        (String)cmbHora1.getSelectedItem() + ":" + 
+                        (String)cmbMinutos1.getSelectedItem()+ ":" + 
+                        (String)cmbSegundos1.getSelectedItem();
+                        
+                        //Para notificacion
+                        parametroHoraNotificacion =(String)cmbHora.getSelectedItem() + ":" + 
+                        (String)cmbMinutos.getSelectedItem() + ":" + (String)cmbSegundos.getSelectedItem();
                     //}
                     
                     
@@ -181,7 +188,7 @@ public class GUICalendar extends javax.swing.JFrame {
                     });
                     
                     //Se llenan los Array para la notificacion con la GUIEventDetail
-                    arrHora.add(parametroHora);
+                    arrHora.add(parametroHoraNotificacion);
                     nombre.add(txtNombreEvento.getText());
                     descripcion.add(txtDescripcion.getText());
                     fecha.add(item.getStartTime().getDate().toString());
@@ -232,9 +239,8 @@ public class GUICalendar extends javax.swing.JFrame {
                     
                 //GUIEventDetail del evento
                 //AGREGAR MAS COSAS :)MADE
-                if(nombre.contains(actualItem.getItem().getHeaderText()))
-                    
-                //guiEvent.lblTipoEvento.setText();
+                    //
+               // guiEvent.lblTipoEvento.setText(categoria.get(nombre.indexOf(actualItem.getItem().getHeaderText())));
                 guiEvent.lblNombreEvento.setText(actualItem.getItem().getHeaderText());
                 guiEvent.lblDescripcion.setText(actualItem.getItem().getDescriptionText());
                 guiEvent.lblHoraInicial.setText(Integer.toString(actualItem.getItem().getStartTime().getHour()));
@@ -250,6 +256,7 @@ public class GUICalendar extends javax.swing.JFrame {
                 
                 //Visible despues de hacer Click
                 guiEvent.setVisible(rootPaneCheckingEnabled);
+                guiEvent.pnlTiempo.setVisible(true);
                 }
                 
             }
@@ -807,20 +814,22 @@ public class GUICalendar extends javax.swing.JFrame {
         
         //Se implementa la funcionalidad de aviso de Notificacion por medio de
         //GUIEventDetaiil en sincronizacion con reloj
-        if(lblReloj.getText()!=""){
+        if(!"".equals(lblReloj.getText())){
             String hora1=lblReloj.getText();
             int val = 0 ; 
-            
                if(arrHora.contains(hora1)){
                     for(int i=0; i<arrHora.size(); i++){
                         if(arrHora.get(i).equals(hora1)){
+                            System.out.println("Hola");
                             val = i;
                         }
                     }
                 guiEvent.lblNombreEvento.setText(nombre.get(val));
                 guiEvent.lblDescripcion.setText(descripcion.get(val));
+                guiEvent.lblTipoEvento.setText(categoria.get(val)); 
+                guiEvent.pnlTiempo.setVisible(false);
                 
-                guiEvent.setVisible(rootPaneCheckingEnabled);
+                guiEvent.setVisible(true);
                 }
             
         }
