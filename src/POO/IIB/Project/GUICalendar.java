@@ -97,7 +97,6 @@ public class GUICalendar extends javax.swing.JFrame {
                 Appointment item = new Appointment();
                 
                 //Encapsular datos
-                    
                     if(cmbCategoria.getSelectedIndex()==0){
                       miEvento = new Academia(txtNombreEvento.getText(),
                               txtDescripcion.getText(), txtDetalles.getText(), 
@@ -123,11 +122,13 @@ public class GUICalendar extends javax.swing.JFrame {
                     item.setStartTime(startTime);
                     DateTime endTime = e.getDate().addHours(Integer.parseInt((String)cmbHora1.getSelectedItem())).addMinutes(Integer.parseInt((String)cmbMinutos1.getSelectedItem())).addSeconds(Integer.parseInt((String)cmbSegundos1.getSelectedItem()));
                     item.setEndTime(endTime);
+                    }catch(NumberFormatException nfe){
+                        JOptionPane.showMessageDialog(rootPane, 
+                                "LLene todos los campos");
                     }catch(NullPointerException npe){
                         JOptionPane.showMessageDialog(rootPane, 
                                 "LLene todos los campos");
                     }
-                    
                     item.setHeaderText(miEvento.getNombre());
                     item.setDescriptionText(miEvento.getDescripcion());
                     item.setDetails(miEvento.getDetalles());
